@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--
+Graybyt3 - Ex-Blackhat 🖤 | Ex Super Mod of Team_CC.
+Now securing systems as a Senior Security Expert 🛡️.
+I hack servers for fun, patch them to torture you.
+
+"My life is a lie, and i'm living in this only truth.- Graybyt3"
+
+WARNING: This code is for educational and ethical purposes only.
+I am not responsible for any misuse or illegal activities.
+
+WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in this world than being called Pappu.
+#FuCk_Pappu
+-->
+  <title>GRAYBYTE-URL EXTRACTOR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #000, #1a0000);
+      color: red;
+      font-family: 'Rubik Vinyl', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    textarea, input[type="text"], button, h1, h2, label, .summary, #notification {
+      font-family: 'Rubik Vinyl', sans-serif;
+    }
+    ::placeholder {
+      font-family: 'Rubik Vinyl', sans-serif;
+    }
+    .container {
+      position: relative;
+      width: 95%;
+      background-color: #1a0000;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+      animation: pulse 3s infinite;
+      overflow: hidden;
+    }
+    .container::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,0,0,0.3) 10%, transparent 40%);
+      animation: sparkle 3s infinite;
+      pointer-events: none;
+    }
+    @keyframes sparkle {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      50% { transform: translate(50px, 50px) scale(1.2); opacity: 0.3; }
+      100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); }
+      50% { box-shadow: 0 0 60px rgba(255, 0, 0, 1); }
+      100% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); }
+    }
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+    .title {
+      animation: bounce 2s infinite;
+      text-align: center;
+      color: green;
+    }
+    .summary {
+      animation: bounce 2s infinite;
+    }
+    h2 {
+      margin: 0 0 10px 0;
+    }
+    .input-heading {
+      color: red;
+    }
+    .output-heading {
+      color: red;
+    }
+    .forms-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 5%;
+    }
+    .form-column {
+      width: 45%;
+      height: 500px;
+      background-color: rgba(0,0,0,0.8);
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.7), 0 0 30px rgba(255, 0, 0, 0.9);
+    }
+    .form-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      height: 40px;
+      padding: 0;
+      margin-top: 5px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      background-color: black;
+      color: white;
+      box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.7);
+    }
+    #inputText, #outputText {
+      flex: 1;
+      resize: vertical;
+      overflow-y: auto;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+      background-color: #8b0000;
+      color: white;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
+    }
+    button:hover {
+      transform: scale(1.05);
+      background-color: #a40000;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+    }
+    .mini-forms-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .mini-forms {
+      display: flex;
+      gap: 10px;
+      width: 50%;
+    }
+    .mini-form {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+    }
+    .summary p {
+      margin: 5px 0;
+    }
+    .total {
+      color: red;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .duplicates {
+      color: red;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .final {
+      color: green;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    #notification {
+      margin-top: 15px;
+      font-size: 1em;
+      font-weight: bold;
+      color: green;
+      opacity: 100;
+      transition: opacity 2s;
+      text-align: center;
+    }
+    /* Override font for summary output and input/output text */
+    #inputText, #outputText, .summary {
+      font-family: 'Play', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="container animate__animated animate__fadeIn">
+    <h1 class="title">GRAYBYTE-URL EXTRACTOR</h1>
+    <div class="forms-container">
+      <div class="form-column" id="inputColumn">
+        <div class="form-content">
+          <h2 class="input-heading">Input Anything:</h2>
+          <textarea id="inputText" placeholder="Paste any fucking text here..."></textarea>
+          <button type="button" id="extractBtn">Extract</button>
+        </div>
+      </div>
+      <div class="form-column" id="outputColumn">
+        <div class="form-content">
+          <h2 class="output-heading">Extracted URLs</h2>
+          <textarea id="outputText" placeholder="Your fucking extracted URLs are here..."></textarea>
+          <button type="button" id="copyBtn">Copy Extracted URLs</button>
+        </div>
+      </div>
+    </div>
+    <div class="mini-forms-container">
+      <div class="mini-forms">
+        <div class="mini-form">
+          <label for="beforeText">Text to add BEFORE URL:</label>
+          <input type="text" id="beforeText" placeholder=""/>
+        </div>
+        <div class="mini-form">
+          <label for="afterText">Text to add AFTER URL:</label>
+          <input type="text" id="afterText" placeholder=""/>
+        </div>
+      </div>
+    </div>
+    <div class="summary" id="summary"></div>
+    <div id="notification"></div>
+  </div>
+  <script>
+    function extractURLs(text) {
+      var urlRegex = /\b((?:(?:https?:\/\/)?(?:www\.)?[\w\-]+\.[a-z]{2,}(?:\.[a-z]{2,})?(?::\d+)?(?:\/\S*)?))\b/gi;
+      var matches = text.match(urlRegex);
+      return matches ? matches : [];
+    }
+    function showNotification(message) {
+      var notification = document.getElementById('notification');
+      notification.innerText = message;
+      notification.style.opacity = 1;
+      setTimeout(function() {
+        notification.style.opacity = 0;
+      }, 2000);
+    }
+    document.getElementById('extractBtn').addEventListener('click', function() {
+      var inputTextEl = document.getElementById('inputText');
+      var inputText = inputTextEl.value;
+      var beforeText = document.getElementById('beforeText').value;
+      var afterText = document.getElementById('afterText').value;
+      var urls = extractURLs(inputText);
+      var processedUrls = [];
+      var seen = new Set();
+      urls.forEach(function(url) {
+        var lowerUrl = url.toLowerCase();
+        var cleanedUrl = lowerUrl.replace(/^(https?:\/\/)?(www\.)?/i, '');
+        if (!seen.has(cleanedUrl)) {
+          seen.add(cleanedUrl);
+          processedUrls.push(beforeText + cleanedUrl + afterText);
+        }
+      });
+      var totalFound = urls.length;
+      var duplicatesRemoved = totalFound - seen.size;
+      var finalCount = processedUrls.length;
+      document.getElementById('outputText').value = processedUrls.join('\n');
+      document.getElementById('summary').innerHTML =
+        '<p class="total">Total URLs Found: ' + totalFound + '</p>' +
+        '<p class="duplicates">Duplicates URLs Removed: ' + duplicatesRemoved + '</p>' +
+        '<p class="final">Unique URLs Ramined: ' + finalCount + '</p>';
+      showNotification('Extraction complete!');
+      inputTextEl.value = "";
+    });
+    document.getElementById('copyBtn').addEventListener('click', function() {
+      var outputText = document.getElementById('outputText');
+      outputText.select();
+      outputText.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(outputText.value).then(function() {
+        showNotification('Copied extracted URLs!');
+      }, function(err) {
+        showNotification('Copy failed!');
+      });
+    });
+  </script>
+</body>
+</html>
