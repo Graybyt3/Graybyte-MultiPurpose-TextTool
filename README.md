@@ -10,4 +10,9 @@ __GRAYBYTE-URL EXTRACTOR is a raw, edgy tool designed for extracting unique URLs
 - **Dynamic, Animated Interface:** Enjoy a dark, pulsating UI with CSS animations and glow effects that demand attention.
 
 
-__FOR MORE INFORMATION AND SUPPORT, CONTACT : https://t.me/rex_cc__
+# 👨🏻‍💻 FOR MORE INFORMATION AND SUPPORT 👨🏻‍💻
+
+[TELEGRAM](https://t.me/rex_cc) | 
+[FACEBOOK](https://www.facebook.com/graybyt3) | 
+[X](https://x.com/gray_byte) | 
+[INSTAGRAM](https://www.instagram.com/gray_byte)
