@@ -46,16 +46,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       padding: 20px;
       overflow: hidden;
     }
-    canvas#particleCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: rgba(10, 10, 20, 0.5);
-    }
-    textarea, input[type="text"], input[type="number"], button, h1, h3, label, .summary, #notification {
+    textarea, input[type="text"], input[type="number"], button, h1, h3, label, .summary {
       font-family: 'Orbitron', sans-serif;
     }
     ::placeholder {
@@ -188,6 +179,41 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       overflow-y: auto;
       height: 100%;
     }
+    @keyframes slideInFromLeft {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    #outputText.slide-in {
+      animation: slideInFromLeft 0.5s ease-out forwards;
+    }
+    @keyframes popupFade {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    .popup-notification {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(20, 20, 40, 0.7);
+      padding: 39px 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(107, 60, 201, 0.7);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.0em;
+      font-weight: bold;
+      text-align: center;
+      z-index: 1000;
+      animation: popupFade 1s ease-in-out forwards;
+    }
     .button-container {
       display: flex;
       flex-wrap: wrap;
@@ -201,7 +227,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      background:green;
+      background: green;
       color: white;
       font-weight: 600;
       text-transform: uppercase;
@@ -257,20 +283,6 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
     .summary p {
       margin: 0;
       font-size: 1.0em;
-    }
-    .total, .duplicates, .final {
-      color: red;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-    #notification {
-      margin-top: 15px;
-      font-size: 1.0em;
-      font-weight: bold;
-      color: green;
-      opacity: 1;
-      transition: opacity 3s;
-      text-align: center;
     }
     @media (max-width: 768px) {
       .container {
@@ -351,7 +363,6 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
   </style>
 </head>
 <body>
-  <canvas id="particleCanvas"></canvas>
   <div class="container animate__animated animate__fadeIn">
     <h1 class="title">GRAYBYTE BYTE SNIPER</h1>
     <div class="forms-container">
@@ -408,78 +419,12 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       </div>
     </div>
     <div class="summary" id="summary"></div>
-    <div id="notification"></div>
   </div>
   <script>
-    // Particle background
-    const canvas = document.getElementById('particleCanvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const particlesArray = [];
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 4 + 1;
-        this.speedX = Math.random() * 1.5 - 0.75;
-        this.speedY = Math.random() * 1.5 - 0.75;
-        this.glow = Math.random() * 0.4 + 0.4;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.size > 0.4) this.size -= 0.10;
-        this.glow = Math.max(0.6, this.glow - 0.09);
-      }
-      draw() {
-        ctx.fillStyle = `rgba(107, 60, 201, ${this.glow})`;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = '#d32f2f';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
-    }
-    function initParticles() {
-      for (let i = 0; i < 200; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
-    function handleParticles() {
-      for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
-        if (particlesArray[i].size <= 0.4) {
-          particlesArray.splice(i, 1);
-          i--;
-          particlesArray.push(new Particle());
-        }
-      }
-    }
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      handleParticles();
-      requestAnimationFrame(animateParticles);
-    }
-    initParticles();
-    animateParticles();
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
     // Helper functions
     function extractURLs(text) {
       const urlRegex = /(?:https?:\/\/)?(?:[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9]{1,63}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))/gi;
-      const matches = text.match(urlRegex) || [];
-      return matches.map(url => {
-        if (!url.startsWith('http://') && !url.startsWith('https://')) {
-          return 'https://' + url;
-        }
-        return url;
-      });
+      return text.match(urlRegex) || [];
     }
 
     function shuffleArray(array) {
@@ -499,13 +444,27 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
     }
 
     function showNotification(message, isError = false) {
-      const notification = document.getElementById('notification');
-      notification.innerText = message;
-      notification.style.color = isError ? '#e53935' : '#00e676';
-      notification.style.opacity = 1;
+      if (!isError) return;
+      const existingPopup = document.querySelector('.popup-notification');
+      if (existingPopup) {
+        existingPopup.remove();
+      }
+      const popup = document.createElement('div');
+      popup.className = 'popup-notification';
+      popup.innerText = message;
+      popup.style.color = '#e53935';
+      document.body.appendChild(popup);
       setTimeout(() => {
-        notification.style.opacity = 0;
-      }, 3000);
+        popup.remove();
+      }, 1000);
+    }
+
+    function triggerSlideInAnimation() {
+      const outputText = document.getElementById('outputText');
+      outputText.classList.remove('slide-in');
+      setTimeout(() => {
+        outputText.classList.add('slide-in');
+      }, 10);
     }
 
     // Button functions
@@ -532,11 +491,11 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       const uniqueUrls = Array.from(seen.values());
       const processedUrls = applyBeforeAfter(uniqueUrls, beforeText, afterText);
       document.getElementById('outputText').value = processedUrls.join('\n');
+      triggerSlideInAnimation();
       document.getElementById('summary').innerHTML =
-        `<p class="total">Total URLs Found: ${urls.length}</p>` +
-        `<p class="duplicates">Duplicates Removed: ${urls.length - uniqueUrls.length}</p>` +
-        `<p class="final">Unique URLs: ${uniqueUrls.length}</p>`;
-      showNotification('Extraction complete!');
+        `<p style="color: #ffffff;">Total URLs Found: ${urls.length}</p>` +
+        `<p style="color: #ff0000;">Duplicates Removed: ${urls.length - uniqueUrls.length}</p>` +
+        `<p style="color: #66ff00;">Unique URLs: ${uniqueUrls.length}</p>`;
     }
 
     function nDupFunc() {
@@ -551,10 +510,11 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       const uniqueLines = Array.from(new Set(lines));
       const processedLines = applyBeforeAfter(uniqueLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
       document.getElementById('summary').innerHTML =
-        `<p class="total">Total lines: ${lines.length}</p>` +
-        `<p class="final">Unique lines: ${uniqueLines.length}</p>`;
-      showNotification('Duplicates removed!');
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Duplicates Removed: ${lines.length - uniqueLines.length}</p>` +
+        `<p style="color: #66ff00;">Unique Lines: ${uniqueLines.length}</p>`;
     }
 
     function removeSlashAndDedupFunc() {
@@ -587,11 +547,11 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       const uniqueDomains = processedUrls;
       const finalOutput = applyBeforeAfter(uniqueDomains, beforeText, afterText);
       document.getElementById('outputText').value = finalOutput.join('\n');
+      triggerSlideInAnimation();
       document.getElementById('summary').innerHTML =
-        `<p class="total">Total URLs Found: ${urls.length}</p>` +
-        `<p class="duplicates">Duplicates Removed: ${urls.length - uniqueDomains.length}</p>` +
-        `<p class="final">Unique Domains: ${uniqueDomains.length}</p>`;
-      showNotification('Domains extracted and deduplicated!');
+        `<p style="color: #ffffff;">Total URLs Found: ${urls.length}</p>` +
+        `<p style="color: #ff0000;">Duplicates Removed: ${urls.length - uniqueDomains.length}</p>` +
+        `<p style="color: #66ff00;">Unique Domains: ${uniqueDomains.length}</p>`;
     }
 
     function rmConFunc() {
@@ -611,11 +571,11 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       const filteredLines = lines.filter(line => !line.includes(keyword));
       const processedLines = applyBeforeAfter(filteredLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
       document.getElementById('summary').innerHTML =
-        `<p class="total">Total lines: ${lines.length}</p>` +
-        `<p class="duplicates">Lines removed: ${lines.length - filteredLines.length}</p>` +
-        `<p class="final">Remaining lines: ${filteredLines.length}</p>`;
-      showNotification('Lines containing keyword removed!');
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Removed: ${lines.length - filteredLines.length}</p>` +
+        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`;
     }
 
     function rmNonFunc() {
@@ -635,11 +595,11 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       const filteredLines = lines.filter(line => line.includes(keyword));
       const processedLines = applyBeforeAfter(filteredLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
       document.getElementById('summary').innerHTML =
-        `<p class="total">Total lines: ${lines.length}</p>` +
-        `<p class="duplicates">Lines removed: ${lines.length - filteredLines.length}</p>` +
-        `<p class="final">Remaining lines: ${filteredLines.length}</p>`;
-      showNotification('Lines not containing keyword removed!');
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Removed: ${lines.length - filteredLines.length}</p>` +
+        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`;
     }
 
     function rmnNumFunc() {
@@ -660,9 +620,11 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       const processedLines = lines.map(line => line.slice(N));
       const finalOutput = applyBeforeAfter(processedLines, beforeText, afterText);
       document.getElementById('outputText').value = finalOutput.join('\n');
+      triggerSlideInAnimation();
       document.getElementById('summary').innerHTML =
-        `<p class="final">Processed lines: ${processedLines.length}</p>`;
-      showNotification('First N characters removed from each line!');
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Modified: ${lines.length}</p>` +
+        `<p style="color: #66ff00;">Processed Lines: ${processedLines.length}</p>`;
     }
 
     function uppeFunc() {
@@ -677,9 +639,11 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       const upperLines = lines.map(line => line.toUpperCase());
       const processedLines = applyBeforeAfter(upperLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
       document.getElementById('summary').innerHTML =
-        `<p class="final">Processed lines: ${upperLines.length}</p>`;
-      showNotification('Text converted to uppercase!');
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
+        `<p style="color: #66ff00;">Uppercase Lines: ${upperLines.length}</p>`;
     }
 
     function loweFunc() {
@@ -694,9 +658,11 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       const lowerLines = lines.map(line => line.toLowerCase());
       const processedLines = applyBeforeAfter(lowerLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
       document.getElementById('summary').innerHTML =
-        `<p class="final">Processed lines: ${lowerLines.length}</p>`;
-      showNotification('Text converted to lowercase!');
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
+        `<p style="color: #66ff00;">Lowercase Lines: ${lowerLines.length}</p>`;
     }
 
     function capeFunc() {
@@ -711,9 +677,11 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       const titleCaseLines = lines.map(line => toTitleCase(line));
       const processedLines = applyBeforeAfter(titleCaseLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
       document.getElementById('summary').innerHTML =
-        `<p class="final">Processed lines: ${titleCaseLines.length}</p>`;
-      showNotification('Text converted to title case!');
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
+        `<p style="color: #66ff00;">Title Case Lines: ${titleCaseLines.length}</p>`;
     }
 
     function shuffleTextFunc() {
@@ -728,9 +696,11 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       lines = shuffleArray(lines);
       const processedLines = applyBeforeAfter(lines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
       document.getElementById('summary').innerHTML =
-        `<p class="total">Total Lines Processed: ${lines.length}</p>`;
-      showNotification('Text shuffled!');
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Shuffled: ${lines.length}</p>` +
+        `<p style="color: #66ff00;">Shuffled Lines: ${lines.length}</p>`;
     }
 
     // Event listeners
