@@ -204,11 +204,12 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       left: 50%;
       transform: translate(-50%, -50%);
       background: rgba(20, 20, 40, 0.7);
-      padding: 39px 30px;
+      padding: 50px 50px;
       border-radius: 8px;
       box-shadow: 0 0 15px rgba(107, 60, 201, 0.7);
       font-family: 'Orbitron', sans-serif;
       font-size: 1.0em;
+      width: 40%;
       font-weight: bold;
       text-align: center;
       z-index: 1000;
@@ -248,13 +249,40 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       margin-bottom: 10px;
     }
     .how-to-use-popup pre {
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(0, 0, 0, 0.3);
       padding: 10px;
       border-radius: 5px;
+      border: 1px solid rgba(107, 60, 201, 0.5);
+      margin-bottom: 15px;
+      white-space: pre-wrap;
+    }
+    .how-to-use-popup code {
       font-family: 'Play', sans-serif;
       font-size: 0.9em;
-      white-space: pre-wrap;
-      margin-bottom: 15px;
+      color: #e0e0e0;
+    }
+    .how-to-use-popup ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    .how-to-use-popup li {
+      font-family: 'Play', sans-serif;
+      font-size: 1.0em;
+      line-height: 1.5;
+      color: var(--bg-light);
+      list-style-type: square;
+      margin-bottom: 5px;
+    }
+    .how-to-use-popup li::marker {
+      color: #00b7eb;
+    }
+    .highlight {
+      color: #66ff00;
+      font-weight: bold;
+    }
+    .keyword {
+      color: #00b7eb;
+      font-style: italic;
     }
     .close-popup-btn {
       display: block;
@@ -309,7 +337,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      background: green;
+      background: #2d2db2;
       color: white;
       font-weight: 600;
       text-transform: uppercase;
@@ -340,14 +368,14 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       transform: translateY(-2px);
     }
     #howToUseBtn {
-      background: #e53935;
+      background: #c10f0c;
     }
     #howToUseBtn:hover {
       background: var(--secondary);
       box-shadow: 0 5px 15px rgba(211, 47, 47, 0.7);
     }
     #copyBtn {
-      background: green;
+      background: #23ad3c;
     }
     #copyBtn:hover {
       background: #e53935;
@@ -484,7 +512,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
             <button type="button" id="loweBtn">LOWE</button>
             <button type="button" id="capeBtn">CAPE</button>
             <button type="button" id="shuffleBtn">Shuffle</button>
-            <button type="button" id="howToUseBtn">HOW TO USE</button>
+            <button type="button" id="howToUseBtn">READ ME</button>
           </div>
         </div>
       </div>
@@ -569,210 +597,235 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       const popup = document.createElement('div');
       popup.className = 'how-to-use-popup';
       popup.innerHTML = `
-        <h2>URL-X (Extract URLs)</h2>
+        <h2><span class="highlight">URL-X</span> (Extract URLs)</h2>
         <h3>Description</h3>
-        <p>Extracts all URLs from input text, removes duplicates (case-insensitive), and applies optional prefixes/suffixes from Before and After fields.</p>
+        <p>Extracts all URLs from the input text, removes duplicates (case-insensitive), and adds optional prefixes/suffixes from the <span class="keyword">Before</span> and <span class="keyword">After</span> fields.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text (containing URLs), <span class="keyword">Before</span> text (e.g., <code>https://</code>), <span class="keyword">After</span> text (e.g., <code>/admin</code>).</li>
+          <li><strong>Output</strong>: List of unique URLs with prefixes/suffixes applied.</li>
+        </ul>
         <h3>Example</h3>
-        <pre>
+        <pre><code>
 Input:
-Visit https://example.com and http://test.com
-Also check https://EXAMPLE.com/path and test.com
+Visit example.com and https://test.com
+Also check https://EXAMPLE.com/path
 Before: https://
 After: /admin
 Output:
 https://example.com/admin
 https://test.com/admin
-        </pre>
+        </code></pre>
         <h3>Summary</h3>
-        <p>Total URLs Found: 4, Duplicates Removed: 2, Unique URLs: 2</p>
+        <p>Shows total URLs found, duplicates removed, and unique URLs.</p>
 
-        <h2>N-DUP (Remove Duplicates)</h2>
+        <h2><span class="highlight">N-DUP</span> (Remove Duplicates)</h2>
         <h3>Description</h3>
-        <p>Removes duplicate lines from input text (case-sensitive) and applies optional prefixes/suffixes.</p>
+        <p>Removes duplicate lines from the input text (case-sensitive) and adds optional prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text (any lines), <span class="keyword">Before</span> text (e.g., <code>[</code>), <span class="keyword">After</span> text (e.g., <code>]</code>).</li>
+          <li><strong>Output</strong>: List of unique lines with prefixes/suffixes applied.</li>
+        </ul>
         <h3>Example</h3>
-        <pre>
+        <pre><code>
 Input:
 apple
 banana
 apple
-orange
 Before: [
 After: ]
 Output:
 [apple]
 [banana]
-[orange]
-        </pre>
+        </code></pre>
         <h3>Summary</h3>
-        <p>Total lines: 4, Unique lines: 3</p>
+        <p>Shows total lines, duplicates removed, and unique lines.</p>
 
-        <h2>RM / DUP (Remove Slash and Deduplicate)</h2>
+        <h2><span class="highlight">RM / DUP</span> (Remove Slash and Deduplicate)</h2>
         <h3>Description</h3>
-        <p>Extracts URLs, removes everything after the first slash (keeping only the domain), removes duplicates (case-insensitive), and applies prefixes/suffixes.</p>
+        <p>Extracts URLs, keeps only the domain (removes paths after the first slash), removes duplicates (case-insensitive), and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text (containing URLs), <span class="keyword">Before</span> text (e.g., <code>www.</code>), <span class="keyword">After</span> text (e.g., <code>.org</code>).</li>
+          <li><strong>Output</strong>: List of unique domains with prefixes/suffixes applied.</li>
+        </ul>
         <h3>Example</h3>
-        <pre>
+        <pre><code>
 Input:
-https://example.com/path/to/page
+https://example.com/path
 http://example.com/other
-https://test.com
 Before: www.
 After: .org
 Output:
 www.example.com.org
-www.test.com.org
-        </pre>
+        </code></pre>
         <h3>Summary</h3>
-        <p>Total URLs Found: 3, Duplicates Removed: 1, Unique Domains: 2</p>
+        <p>Shows total URLs found, duplicates removed, and unique domains.</p>
 
-        <h2>RM-CON (Remove Containing)</h2>
+        <h2><span class="highlight">RM-CON</span> (Remove Containing)</h2>
         <h3>Description</h3>
-        <p>Removes lines containing the keyword specified in the Keyword field and applies prefixes/suffixes to remaining lines.</p>
+        <p>Removes lines containing a specified <span class="keyword">Keyword</span> and adds prefixes/suffixes to remaining lines.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Keyword</span> (e.g., <code>/wp-content</code>), <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Lines without the <span class="keyword">Keyword</span>, with prefixes/suffixes applied.</li>
+        </ul>
         <h3>Example</h3>
-        <pre>
+        <pre><code>
 Input:
 https://example.com/wp-content
 https://test.com
-https://example.com/admin
 Keyword: /wp-content
-Before: 
-After: 
 Output:
 https://test.com
-https://example.com/admin
-        </pre>
+        </code></pre>
         <h3>Summary</h3>
-        <p>Total lines: 3, Lines removed: 1, Remaining lines: 2</p>
+        <p>Shows total lines, lines removed, and remaining lines.</p>
 
-        <h2>RM-NON (Remove Non-Containing)</h2>
+        <h2><span class="highlight">RM-NON</span> (Remove Non-Containing)</h2>
         <h3>Description</h3>
-        <p>Keeps only lines containing the keyword specified in the Keyword field and applies prefixes/suffixes.</p>
+        <p>Keeps only lines containing a specified <span class="keyword">Keyword</span> and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Keyword</span> (e.g., <code>/wp-content</code>), <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Lines with the <span class="keyword">Keyword</span>, with prefixes/suffixes applied.</li>
+        </ul>
         <h3>Example</h3>
-        <pre>
+        <pre><code>
 Input:
 https://example.com/wp-content
 https://test.com
-https://example.com/admin
 Keyword: /wp-content
-Before: 
-After: 
 Output:
 https://example.com/wp-content
-        </pre>
+        </code></pre>
         <h3>Summary</h3>
-        <p>Total lines: 3, Lines removed: 2, Remaining lines: 1</p>
+        <p>Shows total lines, lines removed, and remaining lines.</p>
 
-        <h2>RMN-NUM (Remove N Characters)</h2>
+        <h2><span class="highlight">RMN-NUM</span> (Remove N Characters)</h2>
         <h3>Description</h3>
-        <p>Removes the first N characters from each line, where N is specified in the Number field, and applies prefixes/suffixes.</p>
+        <p>Removes the first N characters from each line and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Number</span> (e.g., <code>8</code>), <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Lines with N characters removed, with prefixes/suffixes applied.</li>
+        </ul>
         <h3>Example</h3>
-        <pre>
+        <pre><code>
 Input:
 https://example.com
-https://test.com
 Number: 8
-Before: 
-After: 
 Output:
 example.com
-test.com
-        </pre>
+        </code></pre>
         <h3>Summary</h3>
-        <p>Processed lines: 2</p>
+        <p>Shows total lines processed.</p>
 
-        <h2>UPPE (Uppercase)</h2>
+        <h2><span class="highlight">UPPE</span> (Uppercase)</h2>
         <h3>Description</h3>
-        <p>Converts all lines to uppercase and applies prefixes/suffixes.</p>
+        <p>Converts all lines to uppercase and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Uppercase lines with prefixes/suffixes applied.</li>
+        </ul>
         <h3>Example</h3>
-        <pre>
+        <pre><code>
 Input:
 apple
 Banana
-ORANGE
-Before: 
-After: 
 Output:
 APPLE
 BANANA
-ORANGE
-        </pre>
+        </code></pre>
         <h3>Summary</h3>
-        <p>Processed lines: 3</p>
+        <p>Shows total lines processed.</p>
 
-        <h2>LOWE (Lowercase)</h2>
+        <h2><span class="highlight">LOWE</span> (Lowercase)</h2>
         <h3>Description</h3>
-        <p>Converts all lines to lowercase and applies prefixes/suffixes.</p>
+        <p>Converts all lines to lowercase and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Lowercase lines with prefixes/suffixes applied.</li>
+        </ul>
         <h3>Example</h3>
-        <pre>
+        <pre><code>
 Input:
 APPLE
 Banana
-ORANGE
-Before: 
-After: 
 Output:
 apple
 banana
-orange
-        </pre>
+        </code></pre>
         <h3>Summary</h3>
-        <p>Processed lines: 3</p>
+        <p>Shows total lines processed.</p>
 
-        <h2>CAPE (Capitalize)</h2>
+        <h2><span class="highlight">CAPE</span> (Capitalize)</h2>
         <h3>Description</h3>
-        <p>Converts all lines to title case (first letter of each word capitalized) and applies prefixes/suffixes.</p>
+        <p>Converts all lines to title case (first letter of each word capitalized) and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Title case lines with prefixes/suffixes applied.</li>
+        </ul>
         <h3>Example</h3>
-        <pre>
+        <pre><code>
 Input:
 apple pie
 banana split
-orange juice
-Before: 
-After: 
 Output:
 Apple Pie
 Banana Split
-Orange Juice
-        </pre>
+        </code></pre>
         <h3>Summary</h3>
-        <p>Processed lines: 3</p>
+        <p>Shows total lines processed.</p>
 
-        <h2>Shuffle</h2>
+        <h2><span class="highlight">Shuffle</span></h2>
         <h3>Description</h3>
-        <p>Randomly shuffles all lines and applies prefixes/suffixes.</p>
+        <p>Randomly shuffles all lines and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Shuffled lines with prefixes/suffixes applied.</li>
+        </ul>
         <h3>Example</h3>
-        <pre>
+        <pre><code>
 Input:
 line1
 line2
-line3
-Before: 
-After: 
-Output (order varies):
-line3
-line1
+Output (varies):
 line2
-        </pre>
+line1
+        </code></pre>
         <h3>Summary</h3>
-        <p>Total Lines Processed: 3</p>
+        <p>Shows total lines processed.</p>
 
-        <h2>Copy Results</h2>
+        <h2><span class="highlight">Copy Results</span></h2>
         <h3>Description</h3>
-        <p>Copies the content of the Processed Output textarea to the clipboard.</p>
+        <p>Copies the <span class="keyword">Processed Output</span> textarea content to the clipboard.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Input</strong>: <span class="keyword">Processed Output</span> textarea content.</li>
+          <li><strong>Output</strong>: Text copied to clipboard; shows “Results copied!” or “Nothing to copy!” notification.</li>
+        </ul>
         <h3>Example</h3>
-        <pre>
+        <pre><code>
 Output Textarea:
 https://example.com
-https://test.com
 Action: Click Copy Results
-Result: Text is copied to clipboard, notification says “Results copied!” (or “Nothing to copy!” if empty)
-        </pre>
+Result: Text copied, notification shows “Results copied!”
+        </code></pre>
 
         <h2>Additional Features</h2>
-        <p><strong>Text To Add Before/After:</strong> Add custom strings before or after each line (e.g., https:// before, /admin after).</p>
-        <p><strong>Keyword Field:</strong> Used by RM-CON and RM-NON to filter lines based on a keyword (e.g., /wp-content).</p>
-        <p><strong>Number Field:</strong> Used by RMN-NUM to specify how many characters to remove from the start of each line.</p>
-        <p><strong>Summary:</strong> Displays stats like total lines, duplicates removed, or remaining lines after processing.</p>
-        <p><strong>Notifications:</strong> Green for success (e.g., “Extraction complete!”), red for errors (e.g., “Input is empty!”).</p>
+        <ul>
+          <li><strong>Before/After Fields</strong>: Add custom strings before or after each line (e.g., <code>https://</code> before, <code>/admin</code> after).</li>
+          <li><strong>Keyword Field</strong>: Filters lines for <span class="highlight">RM-CON</span> (remove lines with <span class="keyword">Keyword</span>) and <span class="highlight">RM-NON</span> (keep lines with <span class="keyword">Keyword</span>).</li>
+          <li><strong>Number Field</strong>: Specifies how many characters to remove for <span class="highlight">RMN-NUM</span>.</li>
+          <li><strong>Summary</strong>: Displays stats (e.g., total lines, duplicates removed) below the textareas.</li>
+          <li><strong>Notifications</strong>: Red error messages (e.g., “Input is empty!”) appear for invalid actions.</li>
+        </ul>
 
         <button class="close-popup-btn">Close</button>
       `;
@@ -818,7 +871,7 @@ Result: Text is copied to clipboard, notification says “Results copied!” (or
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total URLs Found: ${urls.length}</p>` +
         `<p style="color: #ff0000;">Duplicates Removed: ${urls.length - uniqueUrls.length}</p>` +
-        `<p style="color: #00ff00;">Unique URLs: ${uniqueUrls.length}</p>`;
+        `<p style="color: #66ff00;">Unique URLs: ${uniqueUrls.length}</p>`;
     }
 
     function nDupFunc() {
@@ -837,7 +890,7 @@ Result: Text is copied to clipboard, notification says “Results copied!” (or
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Duplicates Removed: ${lines.length - uniqueLines.length}</p>` +
-        `<p style="color: #00ff00;">Unique Lines: ${uniqueLines.length}</p>`;
+        `<p style="color: #66ff00;">Unique Lines: ${uniqueLines.length}</p>`;
     }
 
     function removeSlashAndDedupFunc() {
@@ -874,7 +927,7 @@ Result: Text is copied to clipboard, notification says “Results copied!” (or
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total URLs Found: ${urls.length}</p>` +
         `<p style="color: #ff0000;">Duplicates Removed: ${urls.length - uniqueDomains.length}</p>` +
-        `<p style="color: #00ff00;">Unique Domains: ${uniqueDomains.length}</p>`;
+        `<p style="color: #66ff00;">Unique Domains: ${uniqueDomains.length}</p>`;
     }
 
     function rmConFunc() {
@@ -898,7 +951,7 @@ Result: Text is copied to clipboard, notification says “Results copied!” (or
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Removed: ${lines.length - filteredLines.length}</p>` +
-        `<p style="color: #00ff00;">Remaining Lines: ${filteredLines.length}</p>`;
+        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`;
     }
 
     function rmNonFunc() {
@@ -922,7 +975,7 @@ Result: Text is copied to clipboard, notification says “Results copied!” (or
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Removed: ${lines.length - filteredLines.length}</p>` +
-        `<p style="color: #00ff00;">Remaining Lines: ${filteredLines.length}</p>`;
+        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`;
     }
 
     function rmnNumFunc() {
@@ -947,7 +1000,7 @@ Result: Text is copied to clipboard, notification says “Results copied!” (or
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Modified: ${lines.length}</p>` +
-        `<p style="color: #00ff00;">Processed Lines: ${processedLines.length}</p>`;
+        `<p style="color: #66ff00;">Processed Lines: ${processedLines.length}</p>`;
     }
 
     function uppeFunc() {
@@ -966,7 +1019,7 @@ Result: Text is copied to clipboard, notification says “Results copied!” (or
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
-        `<p style="color: #00ff00;">Uppercase Lines: ${upperLines.length}</p>`;
+        `<p style="color: #66ff00;">Uppercase Lines: ${upperLines.length}</p>`;
     }
 
     function loweFunc() {
@@ -985,7 +1038,7 @@ Result: Text is copied to clipboard, notification says “Results copied!” (or
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
-        `<p style="color: #00ff00;">Lowercase Lines: ${lowerLines.length}</p>`;
+        `<p style="color: #66ff00;">Lowercase Lines: ${lowerLines.length}</p>`;
     }
 
     function capeFunc() {
@@ -1004,7 +1057,7 @@ Result: Text is copied to clipboard, notification says “Results copied!” (or
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
-        `<p style="color: #00ff00;">Title Case Lines: ${titleCaseLines.length}</p>`;
+        `<p style="color: #66ff00;">Title Case Lines: ${titleCaseLines.length}</p>`;
     }
 
     function shuffleTextFunc() {
@@ -1023,7 +1076,7 @@ Result: Text is copied to clipboard, notification says “Results copied!” (or
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Shuffled: ${lines.length}</p>` +
-        `<p style="color: #00ff00;">Shuffled Lines: ${lines.length}</p>`;
+        `<p style="color: #66ff00;">Shuffled Lines: ${lines.length}</p>`;
     }
 
     // Event listeners
