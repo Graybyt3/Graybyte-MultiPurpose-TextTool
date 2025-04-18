@@ -214,6 +214,88 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       z-index: 1000;
       animation: popupFade 1s ease-in-out forwards;
     }
+    .how-to-use-popup {
+      position: fixed;
+      top: 10%;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80vw;
+      background: rgba(20, 20, 40, 0.7);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(107, 60, 201, 0.7);
+      overflow-y: auto;
+      z-index: 1001;
+      color: var(--bg-light);
+    }
+    .how-to-use-popup h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      color: #ff4444;
+    }
+    .how-to-use-popup h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2em;
+      margin: 10px 0;
+      color: var(--bg-light);
+    }
+    .how-to-use-popup p {
+      font-family: 'Play', sans-serif;
+      font-size: 1.0em;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .how-to-use-popup pre {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      border-radius: 5px;
+      font-family: 'Play', sans-serif;
+      font-size: 0.9em;
+      white-space: pre-wrap;
+      margin-bottom: 15px;
+    }
+    .close-popup-btn {
+      display: block;
+      margin: 20px auto 0;
+      min-width: 100px;
+      padding: 0.3rem;
+      font-size: 0.8em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: green;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(107, 60, 201, 0.6);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .close-popup-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(107, 60, 201, 0.4);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+    }
+    .close-popup-btn:hover::after {
+      width: 200px;
+      height: 200px;
+    }
+    .close-popup-btn:hover {
+      background: var(--secondary);
+      box-shadow: 0 5px 15px rgba(107, 60, 201, 0.7);
+      transform: translateY(-2px);
+    }
     .button-container {
       display: flex;
       flex-wrap: wrap;
@@ -256,6 +338,13 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       background: var(--secondary);
       box-shadow: 0 5px 15px rgba(107, 60, 201, 0.7);
       transform: translateY(-2px);
+    }
+    #howToUseBtn {
+      background: #e53935;
+    }
+    #howToUseBtn:hover {
+      background: var(--secondary);
+      box-shadow: 0 5px 15px rgba(211, 47, 47, 0.7);
     }
     #copyBtn {
       background: green;
@@ -321,6 +410,12 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       .mini-form {
         width: 100%;
       }
+      .how-to-use-popup {
+        width: 90vw;
+        padding: 15px;
+        top: 10%;
+        bottom: 10%;
+      }
     }
     @media (max-width: 480px) {
       .container {
@@ -359,6 +454,12 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       .mini-form {
         width: 100%;
       }
+      .how-to-use-popup {
+        width: 95vw;
+        padding: 10px;
+        top: 10%;
+        bottom: 10%;
+      }
     }
   </style>
 </head>
@@ -383,6 +484,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
             <button type="button" id="loweBtn">LOWE</button>
             <button type="button" id="capeBtn">CAPE</button>
             <button type="button" id="shuffleBtn">Shuffle</button>
+            <button type="button" id="howToUseBtn">HOW TO USE</button>
           </div>
         </div>
       </div>
@@ -459,6 +561,227 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       }, 1000);
     }
 
+    function showHowToUsePopup() {
+      const existingPopup = document.querySelector('.how-to-use-popup');
+      if (existingPopup) {
+        existingPopup.remove();
+      }
+      const popup = document.createElement('div');
+      popup.className = 'how-to-use-popup';
+      popup.innerHTML = `
+        <h2>URL-X (Extract URLs)</h2>
+        <h3>Description</h3>
+        <p>Extracts all URLs from input text, removes duplicates (case-insensitive), and applies optional prefixes/suffixes from Before and After fields.</p>
+        <h3>Example</h3>
+        <pre>
+Input:
+Visit https://example.com and http://test.com
+Also check https://EXAMPLE.com/path and test.com
+Before: https://
+After: /admin
+Output:
+https://example.com/admin
+https://test.com/admin
+        </pre>
+        <h3>Summary</h3>
+        <p>Total URLs Found: 4, Duplicates Removed: 2, Unique URLs: 2</p>
+
+        <h2>N-DUP (Remove Duplicates)</h2>
+        <h3>Description</h3>
+        <p>Removes duplicate lines from input text (case-sensitive) and applies optional prefixes/suffixes.</p>
+        <h3>Example</h3>
+        <pre>
+Input:
+apple
+banana
+apple
+orange
+Before: [
+After: ]
+Output:
+[apple]
+[banana]
+[orange]
+        </pre>
+        <h3>Summary</h3>
+        <p>Total lines: 4, Unique lines: 3</p>
+
+        <h2>RM / DUP (Remove Slash and Deduplicate)</h2>
+        <h3>Description</h3>
+        <p>Extracts URLs, removes everything after the first slash (keeping only the domain), removes duplicates (case-insensitive), and applies prefixes/suffixes.</p>
+        <h3>Example</h3>
+        <pre>
+Input:
+https://example.com/path/to/page
+http://example.com/other
+https://test.com
+Before: www.
+After: .org
+Output:
+www.example.com.org
+www.test.com.org
+        </pre>
+        <h3>Summary</h3>
+        <p>Total URLs Found: 3, Duplicates Removed: 1, Unique Domains: 2</p>
+
+        <h2>RM-CON (Remove Containing)</h2>
+        <h3>Description</h3>
+        <p>Removes lines containing the keyword specified in the Keyword field and applies prefixes/suffixes to remaining lines.</p>
+        <h3>Example</h3>
+        <pre>
+Input:
+https://example.com/wp-content
+https://test.com
+https://example.com/admin
+Keyword: /wp-content
+Before: 
+After: 
+Output:
+https://test.com
+https://example.com/admin
+        </pre>
+        <h3>Summary</h3>
+        <p>Total lines: 3, Lines removed: 1, Remaining lines: 2</p>
+
+        <h2>RM-NON (Remove Non-Containing)</h2>
+        <h3>Description</h3>
+        <p>Keeps only lines containing the keyword specified in the Keyword field and applies prefixes/suffixes.</p>
+        <h3>Example</h3>
+        <pre>
+Input:
+https://example.com/wp-content
+https://test.com
+https://example.com/admin
+Keyword: /wp-content
+Before: 
+After: 
+Output:
+https://example.com/wp-content
+        </pre>
+        <h3>Summary</h3>
+        <p>Total lines: 3, Lines removed: 2, Remaining lines: 1</p>
+
+        <h2>RMN-NUM (Remove N Characters)</h2>
+        <h3>Description</h3>
+        <p>Removes the first N characters from each line, where N is specified in the Number field, and applies prefixes/suffixes.</p>
+        <h3>Example</h3>
+        <pre>
+Input:
+https://example.com
+https://test.com
+Number: 8
+Before: 
+After: 
+Output:
+example.com
+test.com
+        </pre>
+        <h3>Summary</h3>
+        <p>Processed lines: 2</p>
+
+        <h2>UPPE (Uppercase)</h2>
+        <h3>Description</h3>
+        <p>Converts all lines to uppercase and applies prefixes/suffixes.</p>
+        <h3>Example</h3>
+        <pre>
+Input:
+apple
+Banana
+ORANGE
+Before: 
+After: 
+Output:
+APPLE
+BANANA
+ORANGE
+        </pre>
+        <h3>Summary</h3>
+        <p>Processed lines: 3</p>
+
+        <h2>LOWE (Lowercase)</h2>
+        <h3>Description</h3>
+        <p>Converts all lines to lowercase and applies prefixes/suffixes.</p>
+        <h3>Example</h3>
+        <pre>
+Input:
+APPLE
+Banana
+ORANGE
+Before: 
+After: 
+Output:
+apple
+banana
+orange
+        </pre>
+        <h3>Summary</h3>
+        <p>Processed lines: 3</p>
+
+        <h2>CAPE (Capitalize)</h2>
+        <h3>Description</h3>
+        <p>Converts all lines to title case (first letter of each word capitalized) and applies prefixes/suffixes.</p>
+        <h3>Example</h3>
+        <pre>
+Input:
+apple pie
+banana split
+orange juice
+Before: 
+After: 
+Output:
+Apple Pie
+Banana Split
+Orange Juice
+        </pre>
+        <h3>Summary</h3>
+        <p>Processed lines: 3</p>
+
+        <h2>Shuffle</h2>
+        <h3>Description</h3>
+        <p>Randomly shuffles all lines and applies prefixes/suffixes.</p>
+        <h3>Example</h3>
+        <pre>
+Input:
+line1
+line2
+line3
+Before: 
+After: 
+Output (order varies):
+line3
+line1
+line2
+        </pre>
+        <h3>Summary</h3>
+        <p>Total Lines Processed: 3</p>
+
+        <h2>Copy Results</h2>
+        <h3>Description</h3>
+        <p>Copies the content of the Processed Output textarea to the clipboard.</p>
+        <h3>Example</h3>
+        <pre>
+Output Textarea:
+https://example.com
+https://test.com
+Action: Click Copy Results
+Result: Text is copied to clipboard, notification says “Results copied!” (or “Nothing to copy!” if empty)
+        </pre>
+
+        <h2>Additional Features</h2>
+        <p><strong>Text To Add Before/After:</strong> Add custom strings before or after each line (e.g., https:// before, /admin after).</p>
+        <p><strong>Keyword Field:</strong> Used by RM-CON and RM-NON to filter lines based on a keyword (e.g., /wp-content).</p>
+        <p><strong>Number Field:</strong> Used by RMN-NUM to specify how many characters to remove from the start of each line.</p>
+        <p><strong>Summary:</strong> Displays stats like total lines, duplicates removed, or remaining lines after processing.</p>
+        <p><strong>Notifications:</strong> Green for success (e.g., “Extraction complete!”), red for errors (e.g., “Input is empty!”).</p>
+
+        <button class="close-popup-btn">Close</button>
+      `;
+      document.body.appendChild(popup);
+      popup.querySelector('.close-popup-btn').addEventListener('click', () => {
+        popup.remove();
+      });
+    }
+
     function triggerSlideInAnimation() {
       const outputText = document.getElementById('outputText');
       outputText.classList.remove('slide-in');
@@ -495,7 +818,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total URLs Found: ${urls.length}</p>` +
         `<p style="color: #ff0000;">Duplicates Removed: ${urls.length - uniqueUrls.length}</p>` +
-        `<p style="color: #66ff00;">Unique URLs: ${uniqueUrls.length}</p>`;
+        `<p style="color: #00ff00;">Unique URLs: ${uniqueUrls.length}</p>`;
     }
 
     function nDupFunc() {
@@ -514,7 +837,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Duplicates Removed: ${lines.length - uniqueLines.length}</p>` +
-        `<p style="color: #66ff00;">Unique Lines: ${uniqueLines.length}</p>`;
+        `<p style="color: #00ff00;">Unique Lines: ${uniqueLines.length}</p>`;
     }
 
     function removeSlashAndDedupFunc() {
@@ -551,7 +874,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total URLs Found: ${urls.length}</p>` +
         `<p style="color: #ff0000;">Duplicates Removed: ${urls.length - uniqueDomains.length}</p>` +
-        `<p style="color: #66ff00;">Unique Domains: ${uniqueDomains.length}</p>`;
+        `<p style="color: #00ff00;">Unique Domains: ${uniqueDomains.length}</p>`;
     }
 
     function rmConFunc() {
@@ -575,7 +898,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Removed: ${lines.length - filteredLines.length}</p>` +
-        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`;
+        `<p style="color: #00ff00;">Remaining Lines: ${filteredLines.length}</p>`;
     }
 
     function rmNonFunc() {
@@ -599,7 +922,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Removed: ${lines.length - filteredLines.length}</p>` +
-        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`;
+        `<p style="color: #00ff00;">Remaining Lines: ${filteredLines.length}</p>`;
     }
 
     function rmnNumFunc() {
@@ -624,7 +947,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Modified: ${lines.length}</p>` +
-        `<p style="color: #66ff00;">Processed Lines: ${processedLines.length}</p>`;
+        `<p style="color: #00ff00;">Processed Lines: ${processedLines.length}</p>`;
     }
 
     function uppeFunc() {
@@ -643,7 +966,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
-        `<p style="color: #66ff00;">Uppercase Lines: ${upperLines.length}</p>`;
+        `<p style="color: #00ff00;">Uppercase Lines: ${upperLines.length}</p>`;
     }
 
     function loweFunc() {
@@ -662,7 +985,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
-        `<p style="color: #66ff00;">Lowercase Lines: ${lowerLines.length}</p>`;
+        `<p style="color: #00ff00;">Lowercase Lines: ${lowerLines.length}</p>`;
     }
 
     function capeFunc() {
@@ -681,7 +1004,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
-        `<p style="color: #66ff00;">Title Case Lines: ${titleCaseLines.length}</p>`;
+        `<p style="color: #00ff00;">Title Case Lines: ${titleCaseLines.length}</p>`;
     }
 
     function shuffleTextFunc() {
@@ -700,7 +1023,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       document.getElementById('summary').innerHTML =
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Shuffled: ${lines.length}</p>` +
-        `<p style="color: #66ff00;">Shuffled Lines: ${lines.length}</p>`;
+        `<p style="color: #00ff00;">Shuffled Lines: ${lines.length}</p>`;
     }
 
     // Event listeners
@@ -714,6 +1037,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
     document.getElementById('loweBtn').addEventListener('click', loweFunc);
     document.getElementById('capeBtn').addEventListener('click', capeFunc);
     document.getElementById('shuffleBtn').addEventListener('click', shuffleTextFunc);
+    document.getElementById('howToUseBtn').addEventListener('click', showHowToUsePopup);
 
     document.getElementById('copyBtn').addEventListener('click', function() {
       const outputText = document.getElementById('outputText');
