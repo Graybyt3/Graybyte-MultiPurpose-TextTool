@@ -15,12 +15,15 @@ I am not responsible for any misuse or illegal activities.
 
 WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in this world than being called Pappu.
 #FuCk_Pappu
+
+HOSTING NOTE: To avoid CORS issues in Brave/Chrome, host this file on a local server (e.g., `python -m http.server 8000`) instead of opening as `file://`. Access via `http://localhost:8000`.
 -->
   <title>GRAYBYTE BYTE SNIPER</title>
-  <link rel="icon" type="image/png" href="https://i.postimg.cc/VvR2trJd/GAYBYTE-XCODESCOMPERSSEDMAX.png">
-  <link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- Replaced external favicon with base64 placeholder to avoid loading issues -->
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNWRHWFIAAAAoSURBVFhJ7c6xDQAACAIwY/vf3yE7gYGBgYGBgYGBgYGBgYGBgYGBgYH/A68DOfKXIYAAAAAASUVORK5CYII=">
+  <link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet" onerror="console.error('Failed to load Play font');">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" onerror="console.error('Failed to load Orbitron font');">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" onerror="console.error('Failed to load Animate.css');"/>
   <style>
     :root {
       --primary: #6b3cc9;
@@ -215,14 +218,14 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       z-index: 1000;
       animation: popupFade 1s ease-in-out forwards;
     }
-    .how-to-use-popup {
+    .how-to-use-popup, .removed-content-popup {
       position: fixed;
       top: 10%;
       bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
       width: 80vw;
-      background: rgba(20, 20, 40, 0.7);
+      background: rgb(14, 14, 56);
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 0 15px rgba(107, 60, 201, 0.7);
@@ -230,25 +233,25 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       z-index: 1001;
       color: var(--bg-light);
     }
-    .how-to-use-popup h2 {
+    .how-to-use-popup h2, .removed-content-popup h2 {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.5em;
       margin-bottom: 15px;
       color: #ff4444;
     }
-    .how-to-use-popup h3 {
+    .how-to-use-popup h3, .removed-content-popup h3 {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.2em;
       margin: 10px 0;
       color: var(--bg-light);
     }
-    .how-to-use-popup p {
+    .how-to-use-popup p, .removed-content-popup p {
       font-family: 'Play', sans-serif;
       font-size: 1.0em;
       line-height: 1.5;
       margin-bottom: 10px;
     }
-    .how-to-use-popup pre {
+    .how-to-use-popup pre, .removed-content-popup pre {
       background: rgba(0, 0, 0, 0.3);
       padding: 10px;
       border-radius: 5px;
@@ -256,16 +259,16 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       margin-bottom: 15px;
       white-space: pre-wrap;
     }
-    .how-to-use-popup code {
+    .how-to-use-popup code, .removed-content-popup code {
       font-family: 'Play', sans-serif;
       font-size: 0.9em;
       color: #e0e0e0;
     }
-    .how-to-use-popup ul {
+    .how-to-use-popup ul, .removed-content-popup ul {
       margin: 10px 0;
       padding-left: 20px;
     }
-    .how-to-use-popup li {
+    .how-to-use-popup li, .removed-content-popup li {
       font-family: 'Play', sans-serif;
       font-size: 1.0em;
       line-height: 1.5;
@@ -273,7 +276,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       list-style-type: square;
       margin-bottom: 5px;
     }
-    .how-to-use-popup li::marker {
+    .how-to-use-popup li::marker, .removed-content-popup li::marker {
       color: #00b7eb;
     }
     .highlight {
@@ -401,6 +404,16 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       margin: 0;
       font-size: 1.0em;
     }
+    .summary a {
+      font-size: 1.0em;
+      color: #ff0000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .summary a:hover {
+      text-decoration: underline;
+      color: #66ff00;
+    }
     @media (max-width: 768px) {
       .container {
         padding: 20px;
@@ -438,7 +451,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       .mini-form {
         width: 100%;
       }
-      .how-to-use-popup {
+      .how-to-use-popup, .removed-content-popup {
         width: 90vw;
         padding: 15px;
         top: 10%;
@@ -482,7 +495,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       .mini-form {
         width: 100%;
       }
-      .how-to-use-popup {
+      .how-to-use-popup, .removed-content-popup {
         width: 95vw;
         padding: 10px;
         top: 10%;
@@ -551,6 +564,9 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
     <div class="summary" id="summary"></div>
   </div>
   <script>
+    // Log startup for debugging
+    console.log('GRAYBYTE BYTE SNIPER: Script loaded');
+
     // Helper functions
     function extractURLs(text) {
       const urlRegex = /(?:https?:\/\/)?(?:[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9]{1,63}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))/gi;
@@ -612,12 +628,13 @@ Visit example.com and https://test.com
 Also check https://EXAMPLE.com/path
 Before: https://
 After: /admin
+
 Output:
 https://example.com/admin
 https://test.com/admin
         </code></pre>
         <h3>Summary</h3>
-        <p>Shows total URLs found, duplicates removed, and unique URLs.</p>
+        <p>Shows total URLs found, duplicates removed, and unique URLs. Click <span class="keyword">See What Removed</span> to view duplicates.</p>
 
         <h2><span class="highlight">N-DUP</span> (Remove Duplicates)</h2>
         <h3>Description</h3>
@@ -635,12 +652,13 @@ banana
 apple
 Before: [
 After: ]
+
 Output:
 [apple]
 [banana]
         </code></pre>
         <h3>Summary</h3>
-        <p>Shows total lines, duplicates removed, and unique lines.</p>
+        <p>Shows total lines, duplicates removed, and unique lines. Click <span class="keyword">See what removed</span> to view duplicates.</p>
 
         <h2><span class="highlight">RM / DUP</span> (Remove Slash and Deduplicate)</h2>
         <h3>Description</h3>
@@ -657,11 +675,12 @@ https://example.com/path
 http://example.com/other
 Before: www.
 After: .org
+
 Output:
 www.example.com.org
         </code></pre>
         <h3>Summary</h3>
-        <p>Shows total URLs found, duplicates removed, and unique domains.</p>
+        <p>Shows total URLs found, duplicates removed, and unique domains. Click <span class="keyword">See what removed</span> to view duplicates.</p>
 
         <h2><span class="highlight">RM-CON</span> (Remove Containing)</h2>
         <h3>Description</h3>
@@ -677,6 +696,7 @@ Input:
 https://example.com/wp-content
 https://test.com
 Keyword: /wp-content
+
 Output:
 https://test.com
         </code></pre>
@@ -697,6 +717,7 @@ Input:
 https://example.com/wp-content
 https://test.com
 Keyword: /wp-content
+
 Output:
 https://example.com/wp-content
         </code></pre>
@@ -716,6 +737,7 @@ https://example.com/wp-content
 Input:
 https://example.com
 Number: 8
+
 Output:
 example.com
         </code></pre>
@@ -735,6 +757,7 @@ example.com
 Input:
 apple
 Banana
+
 Output:
 APPLE
 BANANA
@@ -755,6 +778,7 @@ BANANA
 Input:
 APPLE
 Banana
+
 Output:
 apple
 banana
@@ -775,6 +799,7 @@ banana
 Input:
 apple pie
 banana split
+
 Output:
 Apple Pie
 Banana Split
@@ -818,15 +843,27 @@ Action: Click Copy Results
 Result: Text copied, notification shows “Results copied!”
         </code></pre>
 
-        <h2>Additional Features</h2>
-        <ul>
-          <li><strong>Before/After Fields</strong>: Add custom strings before or after each line (e.g., <code>https://</code> before, <code>/admin</code> after).</li>
-          <li><strong>Keyword Field</strong>: Filters lines for <span class="highlight">RM-CON</span> (remove lines with <span class="keyword">Keyword</span>) and <span class="highlight">RM-NON</span> (keep lines with <span class="keyword">Keyword</span>).</li>
-          <li><strong>Number Field</strong>: Specifies how many characters to remove for <span class="highlight">RMN-NUM</span>.</li>
-          <li><strong>Summary</strong>: Displays stats (e.g., total lines, duplicates removed) below the textareas.</li>
-          <li><strong>Notifications</strong>: Red error messages (e.g., “Input is empty!”) appear for invalid actions.</li>
-        </ul>
+        <button class="close-popup-btn">Close</button>
+      `;
+      document.body.appendChild(popup);
+      popup.querySelector('.close-popup-btn').addEventListener('click', () => {
+        popup.remove();
+      });
+    }
 
+    function showRemovedContentPopup(removedItems) {
+      console.log('Showing removed content:', removedItems);
+      const existingPopup = document.querySelector('.removed-content-popup');
+      if (existingPopup) {
+        existingPopup.remove();
+      }
+      const popup = document.createElement('div');
+      popup.className = 'removed-content-popup';
+      const content = removedItems.length > 0 ? removedItems.join('\n') : 'No items were removed.';
+      popup.innerHTML = `
+        <h2><span class="highlight">Removed/Duplicate Content</span></h2>
+        <h3>Items Removed</h3>
+        <pre><code>${content}</code></pre>
         <button class="close-popup-btn">Close</button>
       `;
       document.body.appendChild(popup);
@@ -843,8 +880,28 @@ Result: Text copied, notification shows “Results copied!”
       }, 10);
     }
 
+    // Function to clear summary and set new content with event listener
+    function updateSummary(htmlContent, removedItems) {
+      const summaryDiv = document.getElementById('summary');
+      // Clear existing content
+      summaryDiv.innerHTML = '';
+      // Set new content
+      summaryDiv.innerHTML = htmlContent;
+      // Add event listener to the new button
+      const seeRemovedBtn = document.getElementById('seeRemovedBtn');
+      if (seeRemovedBtn) {
+        // Remove any existing listeners by cloning the element
+        const newBtn = seeRemovedBtn.cloneNode(true);
+        seeRemovedBtn.parentNode.replaceChild(newBtn, seeRemovedBtn);
+        newBtn.addEventListener('click', () => {
+          showRemovedContentPopup(removedItems);
+        });
+      }
+    }
+
     // Button functions
     function extractURLsFunc() {
+      console.log('Running URL-X');
       const inputText = document.getElementById('inputText').value.trim();
       const beforeText = document.getElementById('beforeText').value;
       const afterText = document.getElementById('afterText').value;
@@ -858,23 +915,31 @@ Result: Text copied, notification shows “Results copied!”
         return;
       }
       const seen = new Map();
+      const removed = [];
       urls.forEach(url => {
         let normalizedUrl = url.toLowerCase().replace(/^(https?:\/\/)?(www\.)?/, '').replace(/\/+$/, '');
         if (!seen.has(normalizedUrl)) {
           seen.set(normalizedUrl, url);
+        } else {
+          removed.push(url);
         }
       });
       const uniqueUrls = Array.from(seen.values());
       const processedUrls = applyBeforeAfter(uniqueUrls, beforeText, afterText);
       document.getElementById('outputText').value = processedUrls.join('\n');
       triggerSlideInAnimation();
-      document.getElementById('summary').innerHTML =
+      console.log('Removed URLs:', removed);
+      updateSummary(
         `<p style="color: #ffffff;">Total URLs Found: ${urls.length}</p>` +
         `<p style="color: #ff0000;">Duplicates Removed: ${urls.length - uniqueUrls.length}</p>` +
-        `<p style="color: #66ff00;">Unique URLs: ${uniqueUrls.length}</p>`;
+        `<p style="color: #66ff00;">Unique URLs: ${uniqueUrls.length}</p>` +
+        `<p><a href="#" id="seeRemovedBtn">See what removed</a></p>`,
+        removed
+      );
     }
 
     function nDupFunc() {
+      console.log('Running N-DUP');
       const inputText = document.getElementById('inputText').value.trim();
       const beforeText = document.getElementById('beforeText').value;
       const afterText = document.getElementById('afterText').value;
@@ -883,17 +948,32 @@ Result: Text copied, notification shows “Results copied!”
         return;
       }
       const lines = inputText.split('\n');
-      const uniqueLines = Array.from(new Set(lines));
+      const seen = new Set();
+      const uniqueLines = [];
+      const removed = [];
+      lines.forEach(line => {
+        if (!seen.has(line)) {
+          seen.add(line);
+          uniqueLines.push(line);
+        } else {
+          removed.push(line);
+        }
+      });
       const processedLines = applyBeforeAfter(uniqueLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
       triggerSlideInAnimation();
-      document.getElementById('summary').innerHTML =
+      console.log('Removed lines:', removed);
+      updateSummary(
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Duplicates Removed: ${lines.length - uniqueLines.length}</p>` +
-        `<p style="color: #66ff00;">Unique Lines: ${uniqueLines.length}</p>`;
+        `<p style="color: #66ff00;">Unique Lines: ${uniqueLines.length}</p>` +
+        `<p><a href="#" id="seeRemovedBtn">See what removed</a></p>`,
+        removed
+      );
     }
 
     function removeSlashAndDedupFunc() {
+      console.log('Running RM / DUP');
       const inputText = document.getElementById('inputText').value.trim();
       const beforeText = document.getElementById('beforeText').value;
       const afterText = document.getElementById('afterText').value;
@@ -908,6 +988,7 @@ Result: Text copied, notification shows “Results copied!”
       }
       const processedUrls = [];
       const seen = new Map();
+      const removed = [];
       urls.forEach(url => {
         let cleanUrl = url.replace(/^(https?:\/\/)/i, '');
         const slashIndex = cleanUrl.indexOf('/');
@@ -918,19 +999,26 @@ Result: Text copied, notification shows “Results copied!”
         if (!seen.has(normalizedUrl)) {
           seen.set(normalizedUrl, cleanUrl);
           processedUrls.push(cleanUrl);
+        } else {
+          removed.push(url);
         }
       });
       const uniqueDomains = processedUrls;
       const finalOutput = applyBeforeAfter(uniqueDomains, beforeText, afterText);
       document.getElementById('outputText').value = finalOutput.join('\n');
       triggerSlideInAnimation();
-      document.getElementById('summary').innerHTML =
+      console.log('Removed URLs:', removed);
+      updateSummary(
         `<p style="color: #ffffff;">Total URLs Found: ${urls.length}</p>` +
         `<p style="color: #ff0000;">Duplicates Removed: ${urls.length - uniqueDomains.length}</p>` +
-        `<p style="color: #66ff00;">Unique Domains: ${uniqueDomains.length}</p>`;
+        `<p style="color: #66ff00;">Unique Domains: ${uniqueDomains.length}</p>` +
+        `<p><a href="#" id="seeRemovedBtn">See what removed</a></p>`,
+        removed
+      );
     }
 
     function rmConFunc() {
+      console.log('Running RM-CON');
       const inputText = document.getElementById('inputText').value.trim();
       const keyword = document.getElementById('keyword').value.trim();
       const beforeText = document.getElementById('beforeText').value;
@@ -948,13 +1036,16 @@ Result: Text copied, notification shows “Results copied!”
       const processedLines = applyBeforeAfter(filteredLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
       triggerSlideInAnimation();
-      document.getElementById('summary').innerHTML =
+      updateSummary(
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Removed: ${lines.length - filteredLines.length}</p>` +
-        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`;
+        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`,
+        []
+      );
     }
 
     function rmNonFunc() {
+      console.log('Running RM-NON');
       const inputText = document.getElementById('inputText').value.trim();
       const keyword = document.getElementById('keyword').value.trim();
       const beforeText = document.getElementById('beforeText').value;
@@ -972,13 +1063,16 @@ Result: Text copied, notification shows “Results copied!”
       const processedLines = applyBeforeAfter(filteredLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
       triggerSlideInAnimation();
-      document.getElementById('summary').innerHTML =
+      updateSummary(
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Removed: ${lines.length - filteredLines.length}</p>` +
-        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`;
+        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`,
+        []
+      );
     }
 
     function rmnNumFunc() {
+      console.log('Running RMN-NUM');
       const inputText = document.getElementById('inputText').value.trim();
       const removeNum = document.getElementById('removeNum').value;
       const beforeText = document.getElementById('beforeText').value;
@@ -997,13 +1091,16 @@ Result: Text copied, notification shows “Results copied!”
       const finalOutput = applyBeforeAfter(processedLines, beforeText, afterText);
       document.getElementById('outputText').value = finalOutput.join('\n');
       triggerSlideInAnimation();
-      document.getElementById('summary').innerHTML =
+      updateSummary(
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Modified: ${lines.length}</p>` +
-        `<p style="color: #66ff00;">Processed Lines: ${processedLines.length}</p>`;
+        `<p style="color: #66ff00;">Processed Lines: ${processedLines.length}</p>`,
+        []
+      );
     }
 
     function uppeFunc() {
+      console.log('Running UPPE');
       const inputText = document.getElementById('inputText').value.trim();
       const beforeText = document.getElementById('beforeText').value;
       const afterText = document.getElementById('afterText').value;
@@ -1016,13 +1113,16 @@ Result: Text copied, notification shows “Results copied!”
       const processedLines = applyBeforeAfter(upperLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
       triggerSlideInAnimation();
-      document.getElementById('summary').innerHTML =
+      updateSummary(
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
-        `<p style="color: #66ff00;">Uppercase Lines: ${upperLines.length}</p>`;
+        `<p style="color: #66ff00;">Uppercase Lines: ${upperLines.length}</p>`,
+        []
+      );
     }
 
     function loweFunc() {
+      console.log('Running LOWE');
       const inputText = document.getElementById('inputText').value.trim();
       const beforeText = document.getElementById('beforeText').value;
       const afterText = document.getElementById('afterText').value;
@@ -1035,13 +1135,16 @@ Result: Text copied, notification shows “Results copied!”
       const processedLines = applyBeforeAfter(lowerLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
       triggerSlideInAnimation();
-      document.getElementById('summary').innerHTML =
+      updateSummary(
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
-        `<p style="color: #66ff00;">Lowercase Lines: ${lowerLines.length}</p>`;
+        `<p style="color: #66ff00;">Lowercase Lines: ${lowerLines.length}</p>`,
+        []
+      );
     }
 
     function capeFunc() {
+      console.log('Running CAPE');
       const inputText = document.getElementById('inputText').value.trim();
       const beforeText = document.getElementById('beforeText').value;
       const afterText = document.getElementById('afterText').value;
@@ -1054,13 +1157,16 @@ Result: Text copied, notification shows “Results copied!”
       const processedLines = applyBeforeAfter(titleCaseLines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
       triggerSlideInAnimation();
-      document.getElementById('summary').innerHTML =
+      updateSummary(
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
-        `<p style="color: #66ff00;">Title Case Lines: ${titleCaseLines.length}</p>`;
+        `<p style="color: #66ff00;">Title Case Lines: ${titleCaseLines.length}</p>`,
+        []
+      );
     }
 
     function shuffleTextFunc() {
+      console.log('Running Shuffle');
       const inputText = document.getElementById('inputText').value.trim();
       const beforeText = document.getElementById('beforeText').value;
       const afterText = document.getElementById('afterText').value;
@@ -1073,10 +1179,12 @@ Result: Text copied, notification shows “Results copied!”
       const processedLines = applyBeforeAfter(lines, beforeText, afterText);
       document.getElementById('outputText').value = processedLines.join('\n');
       triggerSlideInAnimation();
-      document.getElementById('summary').innerHTML =
+      updateSummary(
         `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
         `<p style="color: #ff0000;">Lines Shuffled: ${lines.length}</p>` +
-        `<p style="color: #66ff00;">Shuffled Lines: ${lines.length}</p>`;
+        `<p style="color: #66ff00;">Shuffled Lines: ${lines.length}</p>`,
+        []
+      );
     }
 
     // Event listeners
@@ -1093,6 +1201,7 @@ Result: Text copied, notification shows “Results copied!”
     document.getElementById('howToUseBtn').addEventListener('click', showHowToUsePopup);
 
     document.getElementById('copyBtn').addEventListener('click', function() {
+      console.log('Copy button clicked');
       const outputText = document.getElementById('outputText');
       if (!outputText.value) {
         showNotification('Nothing to copy!', true);
@@ -1105,6 +1214,11 @@ Result: Text copied, notification shows “Results copied!”
       }, () => {
         showNotification('Copy failed!', true);
       });
+    });
+
+    // Log when DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM fully loaded');
     });
   </script>
 </body>
