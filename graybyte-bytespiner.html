@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+Graybyt3 - Ex-Blackhat  | Ex Super Mod of Team_CC.
+Now securing systems as a Senior Security Expert .
+I hack servers for fun, patch them to torture you.
+
+"My life is a lie, and i'm living in this only truth.- Graybyt3"
+
+WARNING: This code is for educational and ethical purposes only.
+I am not responsible for any misuse or illegal activities.
+
+WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in this world than being called Pappu.
+#FuCk_Pappu
+-->
+  <title>GRAYBYTE BYTE SNIPER</title>
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/VvR2trJd/GAYBYTE-XCODESCOMPERSSEDMAX.png">
+  <link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet" onerror="console.error('Failed to load Play font');">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" onerror="console.error('Failed to load Orbitron font');">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" onerror="console.error('Failed to load Animate.css');"/>
+  <style>
+    :root {
+      --primary: #6b3cc9;
+      --secondary: #008b91;
+      --accent: #d32f2f;
+      --bg-dark: #0f0f1a;
+      --bg-light: #e0e0e0;
+      --text-dark: #0a0c10;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg-dark), #1a1a2e);
+      color: var(--bg-light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow: hidden;
+    }
+    textarea, input[type="text"], input[type="number"], button, h1, h3, label, .summary {
+      font-family: 'Orbitron', sans-serif;
+    }
+    ::placeholder {
+      font-family: 'Play', sans-serif;
+      color: rgba(200, 200, 200, 0.6);
+    }
+    .container {
+      background: rgba(20, 20, 40, 0.3);
+      backdrop-filter: blur(12px);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      border: 1px solid rgba(100, 100, 100, 0.3);
+      animation: neonPulse 2s infinite alternate;
+      overflow: hidden;
+      z-index: 1;
+    }
+    @keyframes neonPulse {
+      0% {
+        box-shadow: 0 0 15px rgba(107, 60, 201, 0.7), 0 0 30px rgba(211, 47, 47, 0.4);
+        border-color: rgba(107, 60, 201, 0.7);
+      }
+      100% {
+        box-shadow: 0 0 30px rgba(107, 60, 201, 0.9), 0 0 60px rgba(211, 47, 47, 0.6);
+        border-color: rgba(211, 47, 47, 0.7);
+      }
+    }
+    @keyframes glitch {
+      0% {
+        transform: translate(0);
+      }
+      2% {
+        transform: translate(-4px, 4px);
+      }
+      4% {
+        transform: translate(4px, -4px);
+      }
+      6% {
+        transform: translate(0);
+        text-shadow: none;
+      }
+      100% {
+        transform: translate(0);
+      }
+    }
+    .title {
+      animation: glitch 0.8s infinite;
+      text-align: center;
+      color: red;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0px;
+    }
+    .summary {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    h3 {
+      margin: 0 0 10px 0;
+      color: var(--bg-light);
+      font-weight: 600;
+      animation: glowText 2s infinite alternate;
+    }
+    @keyframes glowText {
+      0% { text-shadow: 0 0 5px rgba(107, 60, 201, 0.7); }
+      100% { text-shadow: 0 0 15px rgba(211, 47, 47, 0.9); }
+    }
+    .forms-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 2%;
+    }
+    .form-column {
+      width: 48%;
+      height: 500px;
+      background: rgba(30, 30, 50, 0.2);
+      padding: 15px;
+      border-radius: 8px;
+      animation: innerGlow 2s infinite alternate;
+    }
+    @keyframes innerGlow {
+      0% { box-shadow: 0 0 15px rgba(107, 60, 201, 0.7), inset 0 0 8px rgba(211, 47, 47, 0.4); }
+      100% { box-shadow: 0 0 25px rgba(107, 60, 201, 0.9), inset 0 0 15px rgba(211, 47, 47, 0.6); }
+    }
+    .form-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .textarea-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    textarea, input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      font-size: 0.5em;
+      border: 2px solid var(--primary);
+      border-radius: 5px;
+      background: rgba(20, 20, 40, 0.4);
+      color: var(--bg-light);
+      box-shadow: 0 0 10px rgba(107, 60, 201, 0.6);
+      transition: all 0.3s ease;
+    }
+    textarea:hover, input[type="text"]:hover, input[type="number"]:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 0 20px rgba(107, 60, 201, 0.8);
+    }
+    textarea:focus, input[type="text"]:focus, input[type="number"]:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 10px rgba(107, 60, 201, 0.7);
+      outline: none;
+    }
+    ::placeholder {
+      color: rgba(200, 200, 200, 0.6);
+    }
+    #inputText, #outputText {
+      flex: 1;
+      resize: none;
+      overflow-y: auto;
+      height: 100%;
+    }
+    @keyframes slideInFromLeft {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    #outputText.slide-in {
+      animation: slideInFromLeft 0.5s ease-out forwards;
+    }
+    @keyframes popupFade {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    .popup-notification {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(20, 20, 40, 0.7);
+      padding: 50px 50px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(107, 60, 201, 0.7);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.0em;
+      width: 40%;
+      font-weight: bold;
+      text-align: center;
+      z-index: 1000;
+      animation: popupFade 1s ease-in-out forwards;
+    }
+    .how-to-use-popup, .removed-content-popup {
+      position: fixed;
+      top: 10%;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80vw;
+      background: rgb(14, 14, 56);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(107, 60, 201, 0.7);
+      overflow-y: auto;
+      z-index: 1001;
+      color: var(--bg-light);
+    }
+    .how-to-use-popup h2, .removed-content-popup h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      color: #ff4444;
+    }
+    .how-to-use-popup h3, .removed-content-popup h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2em;
+      margin: 10px 0;
+      color: var(--bg-light);
+    }
+    .how-to-use-popup p, .removed-content-popup p {
+      font-family: 'Play', sans-serif;
+      font-size: 1.0em;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .how-to-use-popup pre, .removed-content-popup pre {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid rgba(107, 60, 201, 0.5);
+      margin-bottom: 15px;
+      white-space: pre-wrap;
+    }
+    .how-to-use-popup code, .removed-content-popup code {
+      font-family: 'Play', sans-serif;
+      font-size: 0.9em;
+      color: #e0e0e0;
+    }
+    .how-to-use-popup ul, .removed-content-popup ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    .how-to-use-popup li, .removed-content-popup li {
+      font-family: 'Play', sans-serif;
+      font-size: 1.0em;
+      line-height: 1.5;
+      color: var(--bg-light);
+      list-style-type: square;
+      margin-bottom: 5px;
+    }
+    .how-to-use-popup li::marker, .removed-content-popup li::marker {
+      color: #00b7eb;
+    }
+    .highlight {
+      color: #66ff00;
+      font-weight: bold;
+    }
+    .keyword {
+      color: #00b7eb;
+      font-style: italic;
+    }
+    .close-popup-btn {
+      display: block;
+      margin: 20px auto 0;
+      min-width: 100px;
+      padding: 0.3rem;
+      font-size: 0.8em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: green;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(107, 60, 201, 0.6);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .close-popup-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(107, 60, 201, 0.4);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+    }
+    .close-popup-btn:hover::after {
+      width: 200px;
+      height: 200px;
+    }
+    .close-popup-btn:hover {
+      background: var(--secondary);
+      box-shadow: 0 5px 15px rgba(107, 60, 201, 0.7);
+      transform: translateY(-2px);
+    }
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .button-container button {
+      min-width: 100px;
+      padding: 0.3rem;
+      font-size: 0.8em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #2d2db2;
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(107, 60, 201, 0.6);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .button-container button::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(107, 60, 201, 0.4);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+    }
+    .button-container button:hover::after {
+      width: 200px;
+      height: 200px;
+    }
+    .button-container button:hover {
+      background: var(--secondary);
+      box-shadow: 0 5px 15px rgba(107, 60, 201, 0.7);
+      transform: translateY(-2px);
+    }
+    #howToUseBtn {
+      background: #c10f0c;
+    }
+    #howToUseBtn:hover {
+      background: var(--secondary);
+      box-shadow: 0 5px 15px rgba(211, 47, 47, 0.7);
+    }
+    #copyBtn {
+      background: #23ad3c;
+    }
+    #copyBtn:hover {
+      background: #e53935;
+      box-shadow: 0 5px 15px rgba(211, 47, 47, 0.7);
+    }
+    .mini-forms-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .mini-forms {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      width: 100%;
+    }
+    .mini-form {
+      width: 48%;
+      display: flex;
+      flex-direction: column;
+    }
+    .summary p {
+      margin: 0;
+      font-size: 1.0em;
+    }
+    .summary a {
+      font-size: 1.0em;
+      color: #ff0000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .summary a:hover {
+      text-decoration: underline;
+      color: #66ff00;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        margin: 0;
+      }
+      .title {
+        font-size: 1.4em;
+      }
+      textarea, input[type="text"], input[type="number"] {
+        font-size: 0.5em;
+      }
+      .forms-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .form-column {
+        width: 100%;
+        height: auto;
+        min-height: 300px;
+      }
+      #inputText, #outputText {
+        min-height: 200px;
+      }
+      .mini-form input[type="text"], .mini-form input[type="number"] {
+        height: 40px;
+      }
+      .button-container button {
+        padding: 12px 25px;
+        font-size: 0.7em;
+      }
+      .mini-forms {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .mini-form {
+        width: 100%;
+      }
+      .how-to-use-popup, .removed-content-popup {
+        width: 90vw;
+        padding: 15px;
+        top: 10%;
+        bottom: 10%;
+      }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+        margin: 0;
+      }
+      .title {
+        font-size: 1.2em;
+      }
+      textarea, input[type="text"], input[type="number"] {
+        font-size: 0.5em;
+      }
+      .forms-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .form-column {
+        width: 100%;
+        height: auto;
+        min-height: 250px;
+      }
+      #inputText, #outputText {
+        min-height: 150px;
+      }
+      .mini-form input[type="text"], .mini-form input[type="number"] {
+        height: 40px;
+      }
+      .button-container button {
+        padding: 12px 25px;
+        font-size: 0.7em;
+      }
+      .mini-forms {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .mini-form {
+        width: 100%;
+      }
+      .how-to-use-popup, .removed-content-popup {
+        width: 95vw;
+        padding: 10px;
+        top: 10%;
+        bottom: 10%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container animate__animated animate__fadeIn">
+    <h1 class="title">GRAYBYTE BYTE SNIPER</h1>
+    <div class="forms-container">
+      <div class="form-column" id="inputColumn">
+        <div class="form-content">
+          <h3 class="input-heading">Input Text:</h3>
+          <div class="textarea-container">
+            <textarea id="inputText" placeholder="Paste any fucking text here..."></textarea>
+          </div>
+          <div class="button-container">
+            <button type="button" id="extractBtn">URL-X</button>
+            <button type="button" id="nDupBtn">N-DUP</button>
+            <button type="button" id="removeSlashBtn">RM / DUP</button>
+            <button type="button" id="rmConBtn">RM-CON</button>
+            <button type="button" id="rmNonBtn">RM-NON</button>
+            <button type="button" id="rmnNumBtn">RMN-NUM</button>
+            <button type="button" id="uppeBtn">UPPE</button>
+            <button type="button" id="loweBtn">LOWE</button>
+            <button type="button" id="capeBtn">CAPE</button>
+            <button type="button" id="shuffleBtn">Shuffle</button>
+            <button type="button" id="howToUseBtn">READ ME</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-column" id="outputColumn">
+        <div class="form-content">
+          <h3 class="output-heading">Processed Output</h3>
+          <div class="textarea-container">
+            <textarea id="outputText" placeholder="Your results are here..."></textarea>
+          </div>
+          <div class="button-container output-buttons">
+            <button type="button" id="copyBtn">Copy Results</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mini-forms-container">
+      <div class="mini-forms">
+        <div class="mini-form">
+          <label for="beforeText">Text To Add Before:</label>
+          <input type="text" id="beforeText" placeholder="Ex- https://">
+        </div>
+        <div class="mini-form">
+          <label for="afterText">Text To Add After:</label>
+          <input type="text" id="afterText" placeholder="Ex- /wp-admin/">
+        </div>
+        <div class="mini-form">
+          <label for="keyword">Keyword for RM-CON/RM-NON:</label>
+          <input type="text" id="keyword" placeholder="Ex- /wp-content/">
+        </div>
+        <div class="mini-form">
+          <label for="removeNum">Number for RMN-NUM:</label>
+          <input type="number" id="removeNum" placeholder="Ex- 7">
+        </div>
+      </div>
+    </div>
+    <div class="summary" id="summary"></div>
+  </div>
+  <script>
+    console.log('GRAYBYTE BYTE SNIPER: Script loaded');
+
+    function extractURLs(text) {
+      const urlRegex = /(?:https?:\/\/)?(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,63}(?:[-a-zA-Z0-9@:%_\+.~#?&\/=]*)/gi;
+      return text.match(urlRegex) || [];
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function toTitleCase(str) {
+      return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+    }
+
+    function applyBeforeAfter(lines, beforeText, afterText) {
+      return lines.map(line => `${beforeText}${line}${afterText}`);
+    }
+
+    function showNotification(message, isError = false) {
+      if (!isError) return;
+      const existingPopup = document.querySelector('.popup-notification');
+      if (existingPopup) {
+        existingPopup.remove();
+      }
+      const popup = document.createElement('div');
+      popup.className = 'popup-notification';
+      popup.innerText = message;
+      popup.style.color = '#e53935';
+      document.body.appendChild(popup);
+      setTimeout(() => {
+        popup.remove();
+      }, 1000);
+    }
+
+    function showHowToUsePopup() {
+      const existingPopup = document.querySelector('.how-to-use-popup');
+      if (existingPopup) {
+        existingPopup.remove();
+      }
+      const popup = document.createElement('div');
+      popup.className = 'how-to-use-popup';
+      popup.innerHTML = `
+        <h2><span class="highlight">URL-X</span> (Extract URLs)</h2>
+        <h3>Description</h3>
+        <p>Extracts all URLs from the input text, removes duplicates (case-insensitive), and adds optional prefixes/suffixes from the <span class="keyword">Before</span> and <span class="keyword">After</span> fields.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text (containing URLs), <span class="keyword">Before</span> text (e.g., <code>https://</code>), <span class="keyword">After</span> text (e.g., <code>/admin</code>).</li>
+          <li><strong>Output</strong>: List of unique URLs with prefixes/suffixes applied.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre><code>
+Input:
+Visit example.com and https://test.com
+Also check https://EXAMPLE.com/path
+Before: https://
+After: /admin
+
+Output:
+https://example.com/admin
+https://test.com/admin
+        </code></pre>
+        <h3>Summary</h3>
+        <p>Shows total URLs found, duplicates removed, and unique URLs. Click <span class="keyword">See What Removed</span> to view duplicates.</p>
+
+        <h2><span class="highlight">N-DUP</span> (Remove Duplicates)</h2>
+        <h3>Description</h3>
+        <p>Removes duplicate lines from the input text (case-sensitive) and adds optional prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text (any lines), <span class="keyword">Before</span> text (e.g., <code>[</code>), <span class="keyword">After</span> text (e.g., <code>]</code>).</li>
+          <li><strong>Output</strong>: List of unique lines with prefixes/suffixes applied.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre><code>
+Input:
+apple
+banana
+apple
+Before: [
+After: ]
+
+Output:
+[apple]
+[banana]
+        </code></pre>
+        <h3>Summary</h3>
+        <p>Shows total lines, duplicates removed, and unique lines. Click <span class="keyword">See what removed</span> to view duplicates.</p>
+
+        <h2><span class="highlight">RM / DUP</span> (Remove Slash and Deduplicate)</h2>
+        <h3>Description</h3>
+        <p>Extracts URLs, keeps only the domain (removes paths and www.), removes duplicates (case-insensitive), and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text (containing URLs), <span class="keyword">Before</span> text (e.g., <code>www.</code>), <span class="keyword">After</span> text (e.g., <code>.org</code>).</li>
+          <li><strong>Output</strong>: List of unique domains with prefixes/suffixes applied.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre><code>
+Input:
+https://www.example.com/path
+http://example.com/other
+Before: www.
+After: .org
+
+Output:
+www.example.com.org
+        </code></pre>
+        <h3>Summary</h3>
+        <p>Shows total URLs found, duplicates removed, and unique domains. Click <span class="keyword">See what removed</span> to view duplicates.</p>
+
+        <h2><span class="highlight">RM-CON</span> (Remove Containing)</h2>
+        <h3>Description</h3>
+        <p>Removes lines containing a specified <span class="keyword">Keyword</span> and adds prefixes/suffixes to remaining lines.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Keyword</span> (e.g., <code>/wp-content</code>), <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Lines without the <span class="keyword">Keyword</span>, with prefixes/suffixes applied.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre><code>
+Input:
+https://example.com/wp-content
+https://test.com
+Keyword: /wp-content
+
+Output:
+https://test.com
+        </code></pre>
+        <h3>Summary</h3>
+        <p>Shows total lines, lines removed, and remaining lines.</p>
+
+        <h2><span class="highlight">RM-NON</span> (Remove Non-Containing)</h2>
+        <h3>Description</h3>
+        <p>Keeps only lines containing a specified <span class="keyword">Keyword</span> and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Keyword</span> (e.g., <code>/wp-content</code>), <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Lines with the <span class="keyword">Keyword</span>, with prefixes/suffixes applied.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre><code>
+Input:
+https://example.com/wp-content
+https://test.com
+Keyword: /wp-content
+
+Output:
+https://example.com/wp-content
+        </code></pre>
+        <h3>Summary</h3>
+        <p>Shows total lines, lines removed, and remaining lines.</p>
+
+        <h2><span class="highlight">RMN-NUM</span> (Remove N Characters)</h2>
+        <h3>Description</h3>
+        <p>Removes the first N characters from each line and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Number</span> (e.g., <code>8</code>), <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Lines with N characters removed, with prefixes/suffixes applied.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre><code>
+Input:
+https://example.com
+Number: 8
+
+Output:
+example.com
+        </code></pre>
+        <h3>Summary</h3>
+        <p>Shows total lines processed.</p>
+
+        <h2><span class="highlight">UPPE</span> (Uppercase)</h2>
+        <h3>Description</h3>
+        <p>Converts all lines to uppercase and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Uppercase lines with prefixes/suffixes applied.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre><code>
+Input:
+apple
+Banana
+
+Output:
+APPLE
+BANANA
+        </code></pre>
+        <h3>Summary</h3>
+        <p>Shows total lines processed.</p>
+
+        <h2><span class="highlight">LOWE</span> (Lowercase)</h2>
+        <h3>Description</h3>
+        <p>Converts all lines to lowercase and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Lowercase lines with prefixes/suffixes applied.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre><code>
+Input:
+APPLE
+Banana
+
+Output:
+apple
+banana
+        </code></pre>
+        <h3>Summary</h3>
+        <p>Shows total lines processed.</p>
+
+        <h2><span class="highlight">CAPE</span> (Capitalize)</h2>
+        <h3>Description</h3>
+        <p>Converts all lines to title case (first letter of each word capitalized) and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Title case lines with prefixes/suffixes applied.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre><code>
+Input:
+apple pie
+banana split
+
+Output:
+Apple Pie
+Banana Split
+        </code></pre>
+        <h3>Summary</h3>
+        <p>Shows total lines processed.</p>
+
+        <h2><span class="highlight">Shuffle</span></h2>
+        <h3>Description</h3>
+        <p>Randomly shuffles all lines and adds prefixes/suffixes.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Inputs</strong>: Input text, <span class="keyword">Before</span> text, <span class="keyword">After</span> text.</li>
+          <li><strong>Output</strong>: Shuffled lines with prefixes/suffixes applied.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre><code>
+Input:
+line1
+line2
+Output (varies):
+line2
+line1
+        </code></pre>
+        <h3>Summary</h3>
+        <p>Shows total lines processed.</p>
+
+        <h2><span class="highlight">Copy Results</span></h2>
+        <h3>Description</h3>
+        <p>Copies the <span class="keyword">Processed Output</span> textarea content to the clipboard.</p>
+        <h3>Inputs/Outputs</h3>
+        <ul>
+          <li><strong>Input</strong>: <span class="keyword">Processed Output</span> textarea content.</li>
+          <li><strong>Output</strong>: Text copied to clipboard; shows “Results copied!” or “Nothing to copy!” notification.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre><code>
+Output Textarea:
+https://example.com
+Action: Click Copy Results
+Result: Text copied, notification shows “Results copied!”
+        </code></pre>
+
+        <button class="close-popup-btn">Close</button>
+      `;
+      document.body.appendChild(popup);
+      popup.querySelector('.close-popup-btn').addEventListener('click', () => {
+        popup.remove();
+      });
+    }
+
+    function showRemovedContentPopup(removedItems) {
+      console.log('Showing removed content:', removedItems);
+      const existingPopup = document.querySelector('.removed-content-popup');
+      if (existingPopup) {
+        existingPopup.remove();
+      }
+      const popup = document.createElement('div');
+      popup.className = 'removed-content-popup';
+      const content = removedItems.length > 0 ? removedItems.join('\n') : 'No items were removed.';
+      popup.innerHTML = `
+        <h2><span class="highlight">Removed/Duplicate Content</span></h2>
+        <h3>Items Removed</h3>
+        <pre><code>${content}</code></pre>
+        <button class="close-popup-btn">Close</button>
+      `;
+      document.body.appendChild(popup);
+      popup.querySelector('.close-popup-btn').addEventListener('click', () => {
+        popup.remove();
+      });
+    }
+
+    function triggerSlideInAnimation() {
+      const outputText = document.getElementById('outputText');
+      outputText.classList.remove('slide-in');
+      setTimeout(() => {
+        outputText.classList.add('slide-in');
+      }, 10);
+    }
+
+    function updateSummary(htmlContent, removedItems) {
+      const summaryDiv = document.getElementById('summary');
+      summaryDiv.innerHTML = '';
+      summaryDiv.innerHTML = htmlContent;
+      const seeRemovedBtn = document.getElementById('seeRemovedBtn');
+      if (seeRemovedBtn) {
+        const newBtn = seeRemovedBtn.cloneNode(true);
+        seeRemovedBtn.parentNode.replaceChild(newBtn, seeRemovedBtn);
+        newBtn.addEventListener('click', () => {
+          showRemovedContentPopup(removedItems);
+        });
+      }
+    }
+
+    function extractURLsFunc() {
+      console.log('Running URL-X');
+      const inputText = document.getElementById('inputText').value.trim();
+      const beforeText = document.getElementById('beforeText').value;
+      const afterText = document.getElementById('afterText').value;
+      if (!inputText) {
+        showNotification('Input is empty!', true);
+        return;
+      }
+      let urls = extractURLs(inputText);
+      if (urls.length === 0) {
+        showNotification('No URLs found!', true);
+        return;
+      }
+      const seen = new Map();
+      const removed = [];
+      urls.forEach(url => {
+        let normalizedUrl = url.toLowerCase().replace(/^(https?:\/\/)?(www\.)?/, '').replace(/\/+$/, '');
+        if (!seen.has(normalizedUrl)) {
+          seen.set(normalizedUrl, url);
+        } else {
+          removed.push(url);
+        }
+      });
+      const uniqueUrls = Array.from(seen.values());
+      const processedUrls = applyBeforeAfter(uniqueUrls, beforeText, afterText);
+      document.getElementById('outputText').value = processedUrls.join('\n');
+      triggerSlideInAnimation();
+      console.log('Removed URLs:', removed);
+      updateSummary(
+        `<p style="color: #ffffff;">Total URLs Found: ${urls.length}</p>` +
+        `<p style="color: #ff0000;">Duplicates Removed: ${urls.length - uniqueUrls.length}</p>` +
+        `<p style="color: #66ff00;">Unique URLs: ${uniqueUrls.length}</p>` +
+        `<p><a href="#" id="seeRemovedBtn">See What Removed</a></p>`,
+        removed
+      );
+    }
+
+    function nDupFunc() {
+      console.log('Running N-DUP');
+      const inputText = document.getElementById('inputText').value.trim();
+      const beforeText = document.getElementById('beforeText').value;
+      const afterText = document.getElementById('afterText').value;
+      if (!inputText) {
+        showNotification('Input is empty!', true);
+        return;
+      }
+      const lines = inputText.split('\n');
+      const seen = new Set();
+      const uniqueLines = [];
+      const removed = [];
+      lines.forEach(line => {
+        if (!seen.has(line)) {
+          seen.add(line);
+          uniqueLines.push(line);
+        } else {
+          removed.push(line);
+        }
+      });
+      const processedLines = applyBeforeAfter(uniqueLines, beforeText, afterText);
+      document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
+      console.log('Removed lines:', removed);
+      updateSummary(
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Duplicates Removed: ${lines.length - uniqueLines.length}</p>` +
+        `<p style="color: #66ff00;">Unique Lines: ${uniqueLines.length}</p>` +
+        `<p><a href="#" id="seeRemovedBtn">See what removed</a></p>`,
+        removed
+      );
+    }
+
+    function removeSlashAndDedupFunc() {
+      console.log('Running RM / DUP');
+      const inputText = document.getElementById('inputText').value.trim();
+      const beforeText = document.getElementById('beforeText').value;
+      const afterText = document.getElementById('afterText').value;
+      if (!inputText) {
+        showNotification('Input is empty!', true);
+        return;
+      }
+      let urls = extractURLs(inputText);
+      if (urls.length === 0) {
+        showNotification('No URLs found!', true);
+        return;
+      }
+      const processedUrls = [];
+      const seen = new Map();
+      const removed = [];
+      urls.forEach(url => {
+        let cleanUrl = url.replace(/^(https?:\/\/)/i, '');
+        const slashIndex = cleanUrl.indexOf('/');
+        if (slashIndex !== -1) {
+          cleanUrl = cleanUrl.substring(0, slashIndex);
+        }
+        cleanUrl = cleanUrl.replace(/^www\./i, '');
+        let normalizedUrl = cleanUrl.toLowerCase();
+        if (!seen.has(normalizedUrl)) {
+          seen.set(normalizedUrl, cleanUrl);
+          processedUrls.push(cleanUrl);
+        } else {
+          removed.push(url);
+        }
+      });
+      const uniqueDomains = processedUrls;
+      const finalOutput = applyBeforeAfter(uniqueDomains, beforeText, afterText);
+      document.getElementById('outputText').value = finalOutput.join('\n');
+      triggerSlideInAnimation();
+      console.log('Removed URLs:', removed);
+      updateSummary(
+        `<p style="color: #ffffff;">Total URLs Found: ${urls.length}</p>` +
+        `<p style="color: #ff0000;">Duplicates Removed: ${urls.length - uniqueDomains.length}</p>` +
+        `<p style="color: #66ff00;">Unique Domains: ${uniqueDomains.length}</p>` +
+        `<p><a href="#" id="seeRemovedBtn">See what removed</a></p>`,
+        removed
+      );
+    }
+
+    function rmConFunc() {
+      console.log('Running RM-CON');
+      const inputText = document.getElementById('inputText').value.trim();
+      const keyword = document.getElementById('keyword').value.trim();
+      const beforeText = document.getElementById('beforeText').value;
+      const afterText = document.getElementById('afterText').value;
+      if (!inputText) {
+        showNotification('Input is empty!', true);
+        return;
+      }
+      if (!keyword) {
+        showNotification('Please enter a keyword for RM-CON!', true);
+        return;
+      }
+      const lines = inputText.split('\n');
+      const filteredLines = lines.filter(line => !line.includes(keyword));
+      const processedLines = applyBeforeAfter(filteredLines, beforeText, afterText);
+      document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
+      updateSummary(
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Removed: ${lines.length - filteredLines.length}</p>` +
+        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`,
+        []
+      );
+    }
+
+    function rmNonFunc() {
+      console.log('Running RM-NON');
+      const inputText = document.getElementById('inputText').value.trim();
+      const keyword = document.getElementById('keyword').value.trim();
+      const beforeText = document.getElementById('beforeText').value;
+      const afterText = document.getElementById('afterText').value;
+      if (!inputText) {
+        showNotification('Input is empty!', true);
+        return;
+      }
+      if (!keyword) {
+        showNotification('Please enter a keyword for RM-NON!', true);
+        return;
+      }
+      const lines = inputText.split('\n');
+      const filteredLines = lines.filter(line => line.includes(keyword));
+      const processedLines = applyBeforeAfter(filteredLines, beforeText, afterText);
+      document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
+      updateSummary(
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Removed: ${lines.length - filteredLines.length}</p>` +
+        `<p style="color: #66ff00;">Remaining Lines: ${filteredLines.length}</p>`,
+        []
+      );
+    }
+
+    function rmnNumFunc() {
+      console.log('Running RMN-NUM');
+      const inputText = document.getElementById('inputText').value.trim();
+      const removeNum = document.getElementById('removeNum').value;
+      const beforeText = document.getElementById('beforeText').value;
+      const afterText = document.getElementById('afterText').value;
+      if (!inputText) {
+        showNotification('Input is empty!', true);
+        return;
+      }
+      if (!removeNum || isNaN(removeNum) || removeNum < 0) {
+        showNotification('Please enter a valid number for RMN-NUM!', true);
+        return;
+      }
+      const N = parseInt(removeNum, 10);
+      const lines = inputText.split('\n');
+      const processedLines = lines.map(line => line.slice(N));
+      const finalOutput = applyBeforeAfter(processedLines, beforeText, afterText);
+      document.getElementById('outputText').value = finalOutput.join('\n');
+      triggerSlideInAnimation();
+      updateSummary(
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Modified: ${lines.length}</p>` +
+        `<p style="color: #66ff00;">Processed Lines: ${processedLines.length}</p>`,
+        []
+      );
+    }
+
+    function uppeFunc() {
+      console.log('Running UPPE');
+      const inputText = document.getElementById('inputText').value.trim();
+      const beforeText = document.getElementById('beforeText').value;
+      const afterText = document.getElementById('afterText').value;
+      if (!inputText) {
+        showNotification('Input is empty!', true);
+        return;
+      }
+      const lines = inputText.split('\n');
+      const upperLines = lines.map(line => line.toUpperCase());
+      const processedLines = applyBeforeAfter(upperLines, beforeText, afterText);
+      document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
+      updateSummary(
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
+        `<p style="color: #66ff00;">Uppercase Lines: ${upperLines.length}</p>`,
+        []
+      );
+    }
+
+    function loweFunc() {
+      console.log('Running LOWE');
+      const inputText = document.getElementById('inputText').value.trim();
+      const beforeText = document.getElementById('beforeText').value;
+      const afterText = document.getElementById('afterText').value;
+      if (!inputText) {
+        showNotification('Input is empty!', true);
+        return;
+      }
+      const lines = inputText.split('\n');
+      const lowerLines = lines.map(line => line.toLowerCase());
+      const processedLines = applyBeforeAfter(lowerLines, beforeText, afterText);
+      document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
+      updateSummary(
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
+        `<p style="color: #66ff00;">Lowercase Lines: ${lowerLines.length}</p>`,
+        []
+      );
+    }
+
+    function capeFunc() {
+      console.log('Running CAPE');
+      const inputText = document.getElementById('inputText').value.trim();
+      const beforeText = document.getElementById('beforeText').value;
+      const afterText = document.getElementById('afterText').value;
+      if (!inputText) {
+        showNotification('Input is empty!', true);
+        return;
+      }
+      const lines = inputText.split('\n');
+      const titleCaseLines = lines.map(line => toTitleCase(line));
+      const processedLines = applyBeforeAfter(titleCaseLines, beforeText, afterText);
+      document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
+      updateSummary(
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Converted: ${lines.length}</p>` +
+        `<p style="color: #66ff00;">Title Case Lines: ${titleCaseLines.length}</p>`,
+        []
+      );
+    }
+
+    function shuffleTextFunc() {
+      console.log('Running Shuffle');
+      const inputText = document.getElementById('inputText').value.trim();
+      const beforeText = document.getElementById('beforeText').value;
+      const afterText = document.getElementById('afterText').value;
+      if (!inputText) {
+        showNotification('Input is empty!', true);
+        return;
+      }
+      let lines = inputText.split('\n').filter(line => line.trim() !== '');
+      lines = shuffleArray(lines);
+      const processedLines = applyBeforeAfter(lines, beforeText, afterText);
+      document.getElementById('outputText').value = processedLines.join('\n');
+      triggerSlideInAnimation();
+      updateSummary(
+        `<p style="color: #ffffff;">Total Lines Processed: ${lines.length}</p>` +
+        `<p style="color: #ff0000;">Lines Shuffled: ${lines.length}</p>` +
+        `<p style="color: #66ff00;">Shuffled Lines: ${lines.length}</p>`,
+        []
+      );
+    }
+
+    document.getElementById('extractBtn').addEventListener('click', extractURLsFunc);
+    document.getElementById('nDupBtn').addEventListener('click', nDupFunc);
+    document.getElementById('removeSlashBtn').addEventListener('click', removeSlashAndDedupFunc);
+    document.getElementById('rmConBtn').addEventListener('click', rmConFunc);
+    document.getElementById('rmNonBtn').addEventListener('click', rmNonFunc);
+    document.getElementById('rmnNumBtn').addEventListener('click', rmnNumFunc);
+    document.getElementById('uppeBtn').addEventListener('click', uppeFunc);
+    document.getElementById('loweBtn').addEventListener('click', loweFunc);
+    document.getElementById('capeBtn').addEventListener('click', capeFunc);
+    document.getElementById('shuffleBtn').addEventListener('click', shuffleTextFunc);
+    document.getElementById('howToUseBtn').addEventListener('click', showHowToUsePopup);
+
+    document.getElementById('copyBtn').addEventListener('click', function() {
+      console.log('Copy button clicked');
+      const outputText = document.getElementById('outputText');
+      if (!outputText.value) {
+        showNotification('Nothing to copy!', true);
+        return;
+      }
+      outputText.select();
+      outputText.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(outputText.value).then(() => {
+        showNotification('Results copied!');
+      }, () => {
+        showNotification('Copy failed!', true);
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM fully loaded');
+    });
+  </script>
+</body>
+</html>
