@@ -564,7 +564,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
     console.log('GRAYBYTE BYTE SNIPER: Script loaded');
 
     function extractURLs(text) {
-      const urlRegex = /(?:https?:\/\/)?(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,63}(?:[-a-zA-Z0-9@:%_\+.~#?&\/=]*)/gi;
+      const urlRegex = /(?:https?:\/\/)?(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,63}(?:\/[-a-zA-Z0-9@:%_\+.~#?&\/=]*)?(?![0-9])/gi;
       return text.match(urlRegex) || [];
     }
 
@@ -610,17 +610,17 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       popup.innerHTML = `
         <h2><span class="highlight">URL-X</span> (Extract URLs)</h2>
         <h3>Description</h3>
-        <p>Extracts all URLs from the input text, removes duplicates (case-insensitive), and adds optional prefixes/suffixes from the <span class="keyword">Before</span> and <span class="keyword">After</span> fields.</p>
+        <p>Extracts valid URLs (e.g., example.com, https://test.com/path) from the input text, removes duplicates (case-insensitive), and adds optional prefixes/suffixes from the <span class="keyword">Before</span> and <span class="keyword">After</span> fields. Invalid URLs like numbers (e.g., 7.60) or partial domains (e.g., GoDaddy.com) are excluded.</p>
         <h3>Inputs/Outputs</h3>
         <ul>
           <li><strong>Inputs</strong>: Input text (containing URLs), <span class="keyword">Before</span> text (e.g., <code>https://</code>), <span class="keyword">After</span> text (e.g., <code>/admin</code>).</li>
-          <li><strong>Output</strong>: List of unique URLs with prefixes/suffixes applied.</li>
+          <li><strong>Output</strong>: List of unique, valid URLs with prefixes/suffixes applied.</li>
         </ul>
         <h3>Example</h3>
         <pre><code>
 Input:
 Visit example.com and https://test.com
-Also check https://EXAMPLE.com/path
+Also check https://EXAMPLE.com/path 7.60 GoDaddy.com
 Before: https://
 After: /admin
 
@@ -841,7 +841,7 @@ Result: Text copied, notification shows “Results copied!”
         <button class="close-popup-btn">Close</button>
       `;
       document.body.appendChild(popup);
-      popup.querySelector('.close-popup-btn').addEventListener('click', () => {
+      popup.query天子('.close-popup-btn').addEventListener('click', () => {
         popup.remove();
       });
     }
