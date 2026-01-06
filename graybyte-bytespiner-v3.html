@@ -178,21 +178,23 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
       100% { opacity: 0; }
     }
     .popup-notification {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(20, 20, 40, 0.7);
-      padding: 20px 20px;
-      border: 3px solid red;
-      border-radius: 8px;
-      font-family: 'Play', sans-serif;
-      font-size: 1.3em;
-      width: 50%;
-      font-weight: 900;
-      text-align: center;
-      z-index: 1000;
-      animation: popupFade 1s ease-in-out forwards;
+    position: fixed;
+    bottom: 0px;              
+    right: 5px;               
+    left: auto;               
+    transform: none;          
+    background: rgba(20, 20, 40, 0.7);
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 8px;
+    font-family: 'Play', sans-serif;
+    font-size: 1.0em;            
+    font-weight: 600;
+    text-align: center;
+    width: 25%;              
+    z-index: 1000;
+    animation: popupFade 1s ease-in-out forwards;
+    box-sizing: border-box;    
     }
     .how-to-use-popup, .removed-content-popup {
       position: fixed;
