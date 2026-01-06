@@ -1142,39 +1142,61 @@ Output:
       );
     }
     function sUrlFunc() {
-      const inputText = document.getElementById('inputText').value.trim();
-      const beforeText = document.getElementById('beforeText').value;
-      const afterText = document.getElementById('afterText').value;
-      if (!inputText) {
-        showNotification('ARE YOU FUCKING PAPPU?!', true);
-        return;
-      }
-      let urls = extractURLs(inputText);
-      if (urls.length === 0) {
-        showNotification('NO URLS FOUND !!', true);
-        return;
-      }
-      const seen = new Map();
-      const removed = [];
-      urls.forEach(url => {
-        let baseUrl = url.toLowerCase().replace(/^(https?:\/\/)?(www\.)?/, '').replace(/\/.*$/, '');
-        if (!seen.has(baseUrl)) {
-          seen.set(baseUrl, url);
-        } else {
-          removed.push(url);
+        const inputText = document.getElementById('inputText').value.trim();
+        const beforeText = document.getElementById('beforeText').value;
+        const afterText = document.getElementById('afterText').value;
+
+        if (!inputText) {
+            showNotification('ARE YOU FUCKING PAPPU?!', true);
+            return;
         }
-      });
-      const uniqueUrls = Array.from(seen.values());
-      const processedUrls = applyBeforeAfter(uniqueUrls, beforeText, afterText);
-      document.getElementById('outputText').value = processedUrls.join('\n');
-      triggerSlideInAnimation();
-      updateSummary(
-        `<p style="color: #ffffff;">TOTAL URLS FOUND = ${urls.length} | </p>` +
-        `<p style="color: #ff0000;">DUPLICATES REMOVED = ${urls.length - uniqueUrls.length} | </p>` +
-        `<p style="color: #66ff00;">UNIQUE URLS = ${uniqueUrls.length}</p>` +
-        `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED !</a></p>`,
-        removed
-      );
+
+        let urls = extractURLs(inputText);
+        if (urls.length === 0) {
+            showNotification('NO URLS FOUND !!', true);
+            return;
+        }
+
+        const seen = new Map();      
+        const removed = [];
+
+        function getRootDomain(host) {
+            host = host.toLowerCase().replace(/^www\./, '');
+            const parts = host.split('.');
+            if (parts.length <= 2) return host;                    
+            return parts.slice(-2).join('.');
+        }
+
+        urls.forEach(url => {
+            let hostname = url.toLowerCase()
+                .replace(/^https?:\/\//, '')
+                .replace(/^www\./, '')
+                .split('/')[0]
+                .split('?')[0]
+                .trim();
+
+            let root = getRootDomain(hostname);
+
+            if (!seen.has(root)) {
+                seen.set(root, url);          
+            } else {
+                removed.push(url);
+            }
+        });
+
+        const uniqueUrls = Array.from(seen.values());
+        const processedUrls = applyBeforeAfter(uniqueUrls, beforeText, afterText);
+
+        document.getElementById('outputText').value = processedUrls.join('\n');
+        triggerSlideInAnimation();
+
+        updateSummary(
+            `<p style="color: #ffffff;">TOTAL URLS FOUND = ${urls.length} | </p>` +
+            `<p style="color: #ff0000;">DUPLICATES REMOVED = ${urls.length - uniqueUrls.length} | </p>` +
+            `<p style="color: #66ff00;">UNIQUE URLS = ${uniqueUrls.length}</p>` +
+            `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED !</a></p>`,
+            removed
+        );
     }
     document.getElementById('extractBtn').addEventListener('click', extractURLsFunc);
     document.getElementById('nDupBtn').addEventListener('click', nDupFunc);
