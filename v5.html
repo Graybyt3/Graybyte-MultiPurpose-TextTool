@@ -42,7 +42,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 5px;
+            /* padding: 5px; */
             overflow: hidden;
             flex-direction: column;
             margin: 0;
@@ -72,10 +72,10 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         }
 
         .container {
-            padding: 0.2rem;
-            border-radius: 15px;
+            padding: 0rem;
+            /* border-radius: 15px; */
             width: 100%;
-            border: 3px solid rgba(255 0 0 / 79%);
+            border: 0px solid rgba(255 0 0 / 79%);
             overflow: hidden;
             z-index: 1;
             flex: 1;
@@ -146,7 +146,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         }
 
         h3 {
-            margin: 0 0 10px 0;
+            margin: 0 0 0px 0;
             color: var(--bg-light);
             font-weight: 600;
             animation: glowText 2s infinite alternate;
@@ -159,8 +159,8 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         }
 
         .form-column {
-            width: 49%;
-            height: 600px;
+            width: 50%;
+            height: 612px;
             background: rgba(30, 30, 50, 0.0);
             padding: 10px;
             border-radius: 7px;
@@ -180,16 +180,17 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
 
         textarea,
         input[type="text"],
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            font-size: 0.9rem;
-            border: 3px solid #ff0000;
-            border-radius: 8px;
-            background: transparent;
-            color: var(--bg-light);
-            box-shadow: 0 0 25px rgba(255, 0, 255, 0.7);
+        input[type="number"]
+        {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 0.8rem;
+        border: 3px solid #ff0000;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--bg-light);
+        box-shadow: 0 0 20px rgb(255 0 218);
         }
 
         textarea:hover,
@@ -411,7 +412,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         }
 
         .cyber-button {
-            padding: 10px 15px;
+            padding: 9px 24px;
             background: transparent;
             border: 2px solid #ff0000;
             color: #fff;
@@ -420,7 +421,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
             border-radius: 8px;
             transition: all .2s;
             min-width: 100px;
-            /* box-shadow: 0 0 30px rgba(255,0,255,.7); */
+            /* box-shadow: 0 0 10px rgba(255, 0, 255, .7); */
             cursor: pointer;
             text-align: center;
             text-transform: uppercase;
@@ -453,12 +454,13 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         }
 
         #howToUseBtn {
-            background: #d32f2f4a;
+            color: #ff0000;
+            background: #5d00ff00;
         }
 
         #howToUseBtn:hover {
             background: var(--secondary);
-            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.7);
+            box-shadow: 0 5px 15px rgba(64, 219, 3, 0.7);
         }
 
         #copyBtn {
@@ -509,17 +511,14 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
             text-decoration: underline;
             color: #66ff00;
         }
-
         .footer {
             text-align: center;
             padding: 10px 0;
-            color: #d32f2f;
-            font-size: 19px;
+            color: #00ff45;
+            font-size: 21px;
             font-weight: 900;
-            letter-spacing: 7px;
-            background: rgba(0, 0, 0, 0.3);
-            /*margin-top: 20px;
-      border-top: 2px solid rgba(255, 0, 0, 0.5);*/
+            letter-spacing: 0px;
+            /* background: rgba(0, 0, 0, 0.3); */
             width: 100%;
             flex-shrink: 0;
         }
@@ -622,8 +621,8 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
                         <button type="button" class="cyber-button" id="xshellBtn">X-SHELL</button>
                         <button type="button" class="cyber-button" id="mshellBtn">M-SHELL</button>
                         <button type="button" class="cyber-button" id="lockBtn">LOCK</button>
-                        <button type="button" class="cyber-button" id="sUrlBtn">S-URL</button>
-                        <button type="button" class="cyber-button" id="howToUseBtn">READ ME</button>                    </div>
+                        <button type="button" class="cyber-button" id="howToUseBtn">READ ME</button>
+                    </div>
                 </div>
             </div>
             <div class="form-column" id="outputColumn">
@@ -1387,163 +1386,163 @@ Output:
             );
         }
 
-    function openInNewTab() {
-        const currentUrl = window.location.href;
-        if (!currentUrl || currentUrl === 'about:blank') {
-            showNotification('CANNOT DETECT CURRENT TOOL URL - Are you running from file:// ?', true);
-            return;
+        function openInNewTab() {
+            const currentUrl = window.location.href;
+            if (!currentUrl || currentUrl === 'about:blank') {
+                showNotification('CANNOT DETECT CURRENT TOOL URL - Are you running from file:// ?', true);
+                return;
+            }
+
+            try {
+                window.open(currentUrl, '_blank');
+                showNotification('[+] TOOL OPENED IN NEW TAB [+]');
+            } catch (e) {
+                showNotification('[!] FAILED TO OPEN NEW TAB [!]', true);
+                console.error('New tab error:', e);
+            }
         }
 
-        try {
-            window.open(currentUrl, '_blank');
-            showNotification('[+] TOOL OPENED IN NEW TAB [+]');
-        } catch (e) {
-            showNotification('[!] FAILED TO OPEN NEW TAB [!]', true);
-            console.error('New tab error:', e);
+        function lShellFunc() {
+            const inputText = document.getElementById('inputText').value.trim();
+            if (!inputText) {
+                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                return;
+            }
+
+            let urls = extractURLs(inputText);
+            if (urls.length === 0) {
+                showNotification('NO URLS FOUND !!', true);
+                return;
+            }
+
+            const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-includes/Requests/src/index.php");
+            document.getElementById('outputText').value = processed.join('\n');
+            triggerSlideInAnimation();
+
+            updateSummary(
+                `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
+                `<p style="color: #66ff00;">L-SHELL SHELLS GENERATED = ${processed.length}</p>`,
+                []
+            );
         }
-    }
 
-            function lShellFunc() {
-                const inputText = document.getElementById('inputText').value.trim();
-                if (!inputText) {
-                    showNotification('ARE YOU FUCKING PAPPU?!', true);
-                    return;
-                }
-
-                let urls = extractURLs(inputText);
-                if (urls.length === 0) {
-                    showNotification('NO URLS FOUND !!', true);
-                    return;
-                }
-
-                const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-includes/Requests/src/index.php");
-                document.getElementById('outputText').value = processed.join('\n');
-                triggerSlideInAnimation();
-
-                updateSummary(
-                    `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
-                    `<p style="color: #66ff00;">L-SHELL SHELLS GENERATED = ${processed.length}</p>`,
-                    []
-                );
+        function mailerFunc() {
+            const inputText = document.getElementById('inputText').value.trim();
+            if (!inputText) {
+                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                return;
             }
 
-            function mailerFunc() {
-                const inputText = document.getElementById('inputText').value.trim();
-                if (!inputText) {
-                    showNotification('ARE YOU FUCKING PAPPU?!', true);
-                    return;
-                }
-
-                let urls = extractURLs(inputText);
-                if (urls.length === 0) {
-                    showNotification('NO URLS FOUND !!', true);
-                    return;
-                }
-
-                const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-includes/PHPMailer/index.php?pass=rex_cc");
-                document.getElementById('outputText').value = processed.join('\n');
-                triggerSlideInAnimation();
-
-                updateSummary(
-                    `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
-                    `<p style="color: #66ff00;">MAILER SHELLS GENERATED = ${processed.length}</p>`,
-                    []
-                );
+            let urls = extractURLs(inputText);
+            if (urls.length === 0) {
+                showNotification('NO URLS FOUND !!', true);
+                return;
             }
 
-            function xShellFunc() {
-                const inputText = document.getElementById('inputText').value.trim();
-                if (!inputText) {
-                    showNotification('ARE YOU FUCKING PAPPU?!', true);
-                    return;
-                }
+            const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-includes/PHPMailer/index.php?pass=rex_cc");
+            document.getElementById('outputText').value = processed.join('\n');
+            triggerSlideInAnimation();
 
-                let urls = extractURLs(inputText);
-                if (urls.length === 0) {
-                    showNotification('NO URLS FOUND !!', true);
-                    return;
-                }
+            updateSummary(
+                `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
+                `<p style="color: #66ff00;">MAILER SHELLS GENERATED = ${processed.length}</p>`,
+                []
+            );
+        }
 
-                const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-includes/interactivity-api/index.php");
-                document.getElementById('outputText').value = processed.join('\n');
-                triggerSlideInAnimation();
-
-                updateSummary(
-                    `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
-                    `<p style="color: #66ff00;">X-SHELL SHELLS GENERATED = ${processed.length}</p>`,
-                    []
-                );
+        function xShellFunc() {
+            const inputText = document.getElementById('inputText').value.trim();
+            if (!inputText) {
+                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                return;
             }
 
-            function mShellFunc() {
-                const inputText = document.getElementById('inputText').value.trim();
-                if (!inputText) {
-                    showNotification('ARE YOU FUCKING PAPPU?!', true);
-                    return;
-                }
-
-                let urls = extractURLs(inputText);
-                if (urls.length === 0) {
-                    showNotification('NO URLS FOUND !!', true);
-                    return;
-                }
-
-                const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-content/plugins/index.php");
-                document.getElementById('outputText').value = processed.join('\n');
-                triggerSlideInAnimation();
-
-                updateSummary(
-                    `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
-                    `<p style="color: #66ff00;">M-SHELL SHELLS GENERATED = ${processed.length}</p>`,
-                    []
-                );
+            let urls = extractURLs(inputText);
+            if (urls.length === 0) {
+                showNotification('NO URLS FOUND !!', true);
+                return;
             }
 
-            function lockFunc() {
-                const inputText = document.getElementById('inputText').value.trim();
-                if (!inputText) {
-                    showNotification('ARE YOU FUCKING PAPPU?!', true);
-                    return;
-                }
+            const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-includes/interactivity-api/index.php");
+            document.getElementById('outputText').value = processed.join('\n');
+            triggerSlideInAnimation();
 
-                let urls = extractURLs(inputText);
-                if (urls.length === 0) {
-                    showNotification('NO URLS FOUND !!', true);
-                    return;
-                }
+            updateSummary(
+                `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
+                `<p style="color: #66ff00;">X-SHELL SHELLS GENERATED = ${processed.length}</p>`,
+                []
+            );
+        }
 
-                const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-content/themes/default/admin.php?action=lock");
-                document.getElementById('outputText').value = processed.join('\n');
-                triggerSlideInAnimation();
-
-                updateSummary(
-                    `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
-                    `<p style="color: #66ff00;">LOCK SHELLS GENERATED = ${processed.length}</p>`,
-                    []
-                );
+        function mShellFunc() {
+            const inputText = document.getElementById('inputText').value.trim();
+            if (!inputText) {
+                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                return;
             }
 
-            function removeSlashAndDedupFuncCore(urls, beforeText = "", afterText = "") {
-                const processedUrls = [];
-                const seen = new Map();
-
-                urls.forEach(url => {
-                    let cleanUrl = url.replace(/^(https?:\/\/)/i, '');
-                    const slashIndex = cleanUrl.indexOf('/');
-                    if (slashIndex !== -1) {
-                        cleanUrl = cleanUrl.substring(0, slashIndex);
-                    }
-                    cleanUrl = cleanUrl.replace(/^www\./i, '');
-
-                    let normalizedUrl = cleanUrl.toLowerCase();
-                    if (!seen.has(normalizedUrl)) {
-                        seen.set(normalizedUrl, cleanUrl);
-                        processedUrls.push(cleanUrl);
-                    }
-                });
-
-                return applyBeforeAfter(processedUrls, beforeText, afterText);
+            let urls = extractURLs(inputText);
+            if (urls.length === 0) {
+                showNotification('NO URLS FOUND !!', true);
+                return;
             }
+
+            const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-content/plugins/index.php");
+            document.getElementById('outputText').value = processed.join('\n');
+            triggerSlideInAnimation();
+
+            updateSummary(
+                `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
+                `<p style="color: #66ff00;">M-SHELL SHELLS GENERATED = ${processed.length}</p>`,
+                []
+            );
+        }
+
+        function lockFunc() {
+            const inputText = document.getElementById('inputText').value.trim();
+            if (!inputText) {
+                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                return;
+            }
+
+            let urls = extractURLs(inputText);
+            if (urls.length === 0) {
+                showNotification('NO URLS FOUND !!', true);
+                return;
+            }
+
+            const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-content/themes/default/admin.php?action=lock");
+            document.getElementById('outputText').value = processed.join('\n');
+            triggerSlideInAnimation();
+
+            updateSummary(
+                `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
+                `<p style="color: #66ff00;">LOCK SHELLS GENERATED = ${processed.length}</p>`,
+                []
+            );
+        }
+
+        function removeSlashAndDedupFuncCore(urls, beforeText = "", afterText = "") {
+            const processedUrls = [];
+            const seen = new Map();
+
+            urls.forEach(url => {
+                let cleanUrl = url.replace(/^(https?:\/\/)/i, '');
+                const slashIndex = cleanUrl.indexOf('/');
+                if (slashIndex !== -1) {
+                    cleanUrl = cleanUrl.substring(0, slashIndex);
+                }
+                cleanUrl = cleanUrl.replace(/^www\./i, '');
+
+                let normalizedUrl = cleanUrl.toLowerCase();
+                if (!seen.has(normalizedUrl)) {
+                    seen.set(normalizedUrl, cleanUrl);
+                    processedUrls.push(cleanUrl);
+                }
+            });
+
+            return applyBeforeAfter(processedUrls, beforeText, afterText);
+        }
         function sUrlFunc() {
             const inputText = document.getElementById('inputText').value.trim();
             const beforeText = document.getElementById('beforeText').value;
