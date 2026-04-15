@@ -1511,7 +1511,7 @@ Output:
                 return;
             }
 
-            const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-content/themes/default/admin.php?action=lock");
+            const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-content/themes/default/admin.php?wp=safe");
             document.getElementById('outputText').value = processed.join('\n');
             triggerSlideInAnimation();
 
