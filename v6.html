@@ -64,6 +64,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         label,
         .summary {
             font-family: 'Play', sans-serif;
+            font-size: 20px;
         }
 
         ::placeholder {
@@ -121,18 +122,18 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         .title {
             text-align: center;
             color: #ff0000;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            font-weight: 900;
+            font-size: 42px;
+            margin: 14px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 2px;
         }
 
         .summary {
             display: flex;
             gap: 10px;
             justify-content: center;
-            margin-top: 5px;
+            margin-top: 0px;
         }
 
         @keyframes glowText {
@@ -147,9 +148,11 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
 
         h3 {
             margin: 0 0 0px 0;
-            color: var(--bg-light);
+            color: #6aff00cc;
+            margin-bottom: 5px;
+            font-size: 23px;
             font-weight: 600;
-            animation: glowText 2s infinite alternate;
+            /* animation: glowText 2s infinite alternate; */
         }
 
         .forms-container {
@@ -182,15 +185,15 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         input[type="text"],
         input[type="number"]
         {
-        width: 100%;
-        padding: 10px;
-        margin-top: 10px;
-        font-size: 0.8rem;
-        border: 3px solid #ff0000;
-        border-radius: 8px;
-        background: #000000c4;
-        color: var(--bg-light);
-        box-shadow: 0 0 20px rgb(255 0 218);
+            width: 100%;
+            padding: 10px;
+            margin: 2px;
+            font-size: 0.8rem;
+            color : #0dff00d6;
+            border: 2px solid #fb00ff;
+            border-radius: 9px;
+            background: #ffffff70;
+            box-shadow: 0 0 15px rgb(162 0 255 / 80%);
         }
 
         textarea:hover,
@@ -412,16 +415,17 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         }
 
         .cyber-button {
-            padding: 9px 24px;
-            background: transparent;
-            border: 2px solid #ff0000;
-            color: #fff;
-            font-size: 0.7rem;
+            padding: 11px 23px;
+            background: #ffffff00;
+            border: 1px solid #0042ff;
+            color: #fdfdff;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
             font-weight: 900;
             border-radius: 8px;
             transition: all .2s;
             min-width: 100px;
-            /* box-shadow: 0 0 10px rgba(255, 0, 255, .7); */
+            box-shadow: 0 0 10px rgb(0 108 255 / 91%);
             cursor: pointer;
             text-align: center;
             text-transform: uppercase;
@@ -454,13 +458,12 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         }
 
         #howToUseBtn {
-            color: #ff0000;
-            background: #5d00ff00;
+            color: #ffffff;
+            background: #5d00ff38;
         }
 
         #howToUseBtn:hover {
-            background: var(--secondary);
-            box-shadow: 0 5px 15px rgba(64, 219, 3, 0.7);
+            color: rgb(255, 0, 0);
         }
 
         #copyBtn {
@@ -513,10 +516,10 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         }
         .footer {
             text-align: center;
-            padding: 10px 0;
+            padding: 0px 0;
             color: #00ff45;
             font-size: 19px;
-            font-weight: 900;
+            font-weight: 600;
             letter-spacing: 0px;
             /* background: rgba(0, 0, 0, 0.3); */
             width: 100%;
@@ -592,43 +595,43 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
 
 <body>
     <div class="container animate__animated animate__fadeIn">
-        <h1 class="title"> ⚞MULI-TEXT TOOL BY GRAYBYTE⚟ </h1>
+        <h1 class="title">─⋆𖤓⋆─ MULI TEXT TOOL BY GRAYBYTE ─⋆𖤓⋆─</h1>
         <div class="forms-container">
             <div class="form-column" id="inputColumn">
                 <div class="form-content">
-                    <h3 class="input-heading">[*] INPUT TEXT :</h3>
+                    <h3 class="input-heading">  📥 ENTER TEXT HERE</h3>
                     <div class="textarea-container">
                         <textarea id="inputText" placeholder="Paste any fucking text here..."></textarea>
                     </div>
                     <div class="button-container">
-                        <button type="button" class="cyber-button" id="extractBtn">URL-X</button>
-                        <button type="button" class="cyber-button" id="nDupBtn">N-DUP</button>
-                        <button type="button" class="cyber-button" id="removeSlashBtn">RM / DUP</button>
-                        <button type="button" class="cyber-button" id="rmConBtn">RM-CON</button>
-                        <button type="button" class="cyber-button" id="rmNonBtn">RM-NON</button>
-                        <button type="button" class="cyber-button" id="rmnNumBtn">RMN-NUM</button>
-                        <button type="button" class="cyber-button" id="uppeBtn">UPPE</button>
-                        <button type="button" class="cyber-button" id="loweBtn">LOWE</button>
-                        <button type="button" class="cyber-button" id="capeBtn">CAPE</button>
-                        <button type="button" class="cyber-button" id="shuffleBtn">Shuffle</button>
-                        <button type="button" class="cyber-button" id="smtpExBtn">SMTP-EX</button>
-                        <button type="button" class="cyber-button" id="webCBtn">WEB-C</button>
-                        <button type="button" class="cyber-button" id="webRBtn">WEB-R</button>
-                        <button type="button" class="cyber-button" id="sUrlBtn">S-URL</button>
-                        <button type="button" class="cyber-button" id="newTabBtn">NEW</button>
-                                                <button type="button" class="cyber-button" id="shopBtn">SHOP</button>
-                        <button type="button" class="cyber-button" id="howToUseBtn">READ ME</button>
+                        <button type="button" class="cyber-button" id="extractBtn">🌍 URL-X</button>
+                        <button type="button" class="cyber-button" id="nDupBtn">🧹 N-DUP</button>
+                        <button type="button" class="cyber-button" id="removeSlashBtn">🆑 RM / DUP</button>
+                        <button type="button" class="cyber-button" id="rmConBtn">⁉️ RM-CON</button>
+                        <button type="button" class="cyber-button" id="rmNonBtn">⛔ RM-NON</button>
+                        <button type="button" class="cyber-button" id="rmnNumBtn">🔢 RMN-NUM</button>
+                        <button type="button" class="cyber-button" id="uppeBtn">🅰 UPPE</button>
+                        <button type="button" class="cyber-button" id="loweBtn">🇦 LOWE</button>
+                        <button type="button" class="cyber-button" id="capeBtn">🆎 CAPE</button>
+                        <button type="button" class="cyber-button" id="shuffleBtn">🔀 Shuffle</button>
+                        <button type="button" class="cyber-button" id="smtpExBtn">📧 SMTP-EX</button>
+                        <button type="button" class="cyber-button" id="webCBtn">🇨 WEB-C</button>
+                        <button type="button" class="cyber-button" id="webRBtn">📇 WEB-R</button>
+                        <button type="button" class="cyber-button" id="sUrlBtn">🔇 S-URL</button>
+                        <button type="button" class="cyber-button" id="newTabBtn">🆕 NEW</button>
+                        <button type="button" class="cyber-button" id="shopBtn">🛒 SHOP</button>
+                        <button type="button" class="cyber-button" id="howToUseBtn">📖 READ ME</button>
                     </div>
                 </div>
             </div>
             <div class="form-column" id="outputColumn">
                 <div class="form-content">
-                    <h3 class="output-heading">[+] PROCESSED OUTPUT :</h3>
+                    <h3 class="output-heading">  📤 PROCESSED OUTPUT </h3>
                     <div class="textarea-container">
                         <textarea id="outputText" placeholder="Your results are here..."></textarea>
                     </div>
                     <div class="button-container output-buttons">
-                        <button type="button" class="cyber-button" id="copyBtn">Copy Results</button>
+                        <button type="button" class="cyber-button" id="copyBtn">📝 Copy Results</button>
                     </div>
                 </div>
             </div>
@@ -636,19 +639,19 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         <div class="mini-forms-container">
             <div class="mini-forms">
                 <div class="mini-form">
-                    <label for="beforeText">[*] TEXT TO ADD BEFORE :</label>
+                    <label for="beforeText">⬅️ TEXT TO ADD BEFORE</label>
                     <input type="text" id="beforeText" placeholder="Ex- https://">
                 </div>
                 <div class="mini-form">
-                    <label for="afterText">[*] TEXT TO ADD AFTER :</label>
+                    <label for="afterText">➡️ TEXT TO ADD AFTER</label>
                     <input type="text" id="afterText" placeholder="Ex- /wp-admin/">
                 </div>
                 <div class="mini-form">
-                    <label for="keyword">[*] KEYWORD FOR RM-CON/RM-NON :</label>
+                    <label for="keyword">🔬 KEYWORD FOR RM-CON/RM-NON</label>
                     <input type="text" id="keyword" placeholder="Ex- /wp-content/">
                 </div>
                 <div class="mini-form">
-                    <label for="removeNum">[*] NUMBER FOR RMN-NUM :</label>
+                    <label for="removeNum">2️⃣ NUMBER FOR RMN-NUM :</label>
                     <input type="number" id="removeNum" placeholder="Ex- 7">
                 </div>
             </div>
@@ -692,7 +695,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         function webCFunc() {
             const inputText = document.getElementById('inputText').value.trim();
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
 
@@ -729,7 +732,7 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
         function webRFunc() {
             const inputText = document.getElementById('inputText').value.trim();
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
 
@@ -819,7 +822,7 @@ https://example.com/admin
 https://test.com/admin
         </code></pre>
         <h3>Summary</h3>
-        <p>Shows total URLs found, duplicates removed, and unique URLs. Click <span class="keyword">SEE WHAT REMOVED !</span> to view duplicates.</p>
+        <p>Shows total URLs found, duplicates removed, and unique URLs. Click <span class="keyword">SEE WHAT REMOVED</span> to view duplicates.</p>
         <h2><span class="highlight">N-DUP</span> (Remove Duplicates)</h2>
         <h3>Description</h3>
         <p>Removes duplicate lines from the input text (case-sensitive) and adds optional prefixes/suffixes.</p>
@@ -841,7 +844,7 @@ Output:
 [banana]
         </code></pre>
         <h3>Summary</h3>
-        <p>Shows total lines, duplicates removed, and unique lines. Click <span class="keyword">SEE WHAT REMOVED !</span> to view duplicates.</p>
+        <p>Shows total lines, duplicates removed, and unique lines. Click <span class="keyword">SEE WHAT REMOVED</span> to view duplicates.</p>
         <h2><span class="highlight">RM / DUP</span> (Remove Slash and Deduplicate)</h2>
         <h3>Description</h3>
         <p>Extracts URLs, keeps only the domain (removes paths and www.), removes duplicates (case-insensitive), and adds prefixes/suffixes.</p>
@@ -861,7 +864,7 @@ Output:
 www.example.com.org
         </code></pre>
         <h3>Summary</h3>
-        <p>Shows total URLs found, duplicates removed, and unique domains. Click <span class="keyword">SEE WHAT REMOVED !</span> to view duplicates.</p>
+        <p>Shows total URLs found, duplicates removed, and unique domains. Click <span class="keyword">SEE WHAT REMOVED</span> to view duplicates.</p>
         <h2><span class="highlight">RM-CON</span> (Remove Containing)</h2>
         <h3>Description</h3>
         <p>Removes lines containing a specified <span class="keyword">Keyword</span> and adds prefixes/suffixes to remaining lines.</p>
@@ -1016,7 +1019,7 @@ Output:
 [test.com|587|admin@test.com|pass456]
         </code></pre>
         <h3>Summary</h3>
-        <p>Shows total SMTP configs found, duplicates removed, and unique configs. Click <span class="keyword">SEE WHAT REMOVED !</span> to view duplicates.</p>
+        <p>Shows total SMTP configs found, duplicates removed, and unique configs. Click <span class="keyword">SEE WHAT REMOVED</span> to view duplicates.</p>
         <h2><span class="highlight">S-URL</span> (Single URL)</h2>
         <h3>Description</h3>
         <p>Extracts URLs, keeps only one URL per base URL (first occurrence, including its path), removes duplicates (case-insensitive), and adds prefixes/suffixes.</p>
@@ -1038,7 +1041,7 @@ Output:
 [https://test.com/path3]
         </code></pre>
         <h3>Summary</h3>
-        <p>Shows total URLs found, duplicates removed, and unique URLs. Click <span class="keyword">SEE WHAT REMOVED !</span> to view duplicates.</p>
+        <p>Shows total URLs found, duplicates removed, and unique URLs. Click <span class="keyword">SEE WHAT REMOVED</span> to view duplicates.</p>
         <h2><span class="highlight">Copy Results</span></h2>
         <h3>Description</h3>
         <p>Copies the <span class="keyword">Processed Output</span> textarea content to the clipboard.</p>
@@ -1087,12 +1090,12 @@ Output:
             const beforeText = document.getElementById('beforeText').value;
             const afterText = document.getElementById('afterText').value;
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
             let urls = extractURLs(inputText);
             if (urls.length === 0) {
-                showNotification('NO URLS FOUND !!', true);
+                showNotification('NO URLS FOUND!', true);
                 return;
             }
             const seen = new Map();
@@ -1113,7 +1116,7 @@ Output:
                 `<p style="color: #ffffff;">TOTAL URLS FOUND = ${urls.length} </p>` +
                 `<p style="color: #ff0000;">DUPLICATES REMOVED = ${urls.length - uniqueUrls.length} </p>` +
                 `<p style="color: #66ff00;">UNIQUE URLS = ${uniqueUrls.length}</p>` +
-                `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED ! !</a></p>`,
+                `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED</a></p>`,
                 removed
             );
         }
@@ -1122,7 +1125,7 @@ Output:
             const beforeText = document.getElementById('beforeText').value;
             const afterText = document.getElementById('afterText').value;
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
             const lines = inputText.split('\n');
@@ -1144,7 +1147,7 @@ Output:
                 `<p style="color: #ffffff;">TOTAL LINES PROCESSED = ${lines.length} </p>` +
                 `<p style="color: #ff0000;">DUPLICATES REMOVED = ${lines.length - uniqueLines.length} </p>` +
                 `<p style="color: #66ff00;">UNIQUE LINES = ${uniqueLines.length}</p>` +
-                `<p><a href="#" id="seeRemovedBtn">SEE WHAT CHANGED ! </a></p>`,
+                `<p><a href="#" id="seeRemovedBtn">SEE WHAT CHANGED</a></p>`,
                 removed
             );
         }
@@ -1153,12 +1156,12 @@ Output:
             const beforeText = document.getElementById('beforeText').value;
             const afterText = document.getElementById('afterText').value;
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
             let urls = extractURLs(inputText);
             if (urls.length === 0) {
-                showNotification('NO URLS FOUND !!', true);
+                showNotification('NO URLS FOUND', true);
                 return;
             }
             const processedUrls = [];
@@ -1187,7 +1190,7 @@ Output:
                 `<p style="color: #ffffff;">TOTAL URLS FOUND = ${urls.length} </p>` +
                 `<p style="color: #ff0000;">DUPLICATES REMOVED = ${urls.length - uniqueDomains.length} </p>` +
                 `<p style="color: #66ff00;">UNIQUE DOMAINS = ${uniqueDomains.length} </p>` +
-                `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED !</a></p>`,
+                `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED</a></p>`,
                 removed
             );
         }
@@ -1197,7 +1200,7 @@ Output:
             const beforeText = document.getElementById('beforeText').value;
             const afterText = document.getElementById('afterText').value;
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
             if (!keyword) {
@@ -1222,7 +1225,7 @@ Output:
             const beforeText = document.getElementById('beforeText').value;
             const afterText = document.getElementById('afterText').value;
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
             if (!keyword) {
@@ -1247,7 +1250,7 @@ Output:
             const beforeText = document.getElementById('beforeText').value;
             const afterText = document.getElementById('afterText').value;
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
             if (!removeNum || isNaN(removeNum) || removeNum < 0) {
@@ -1270,7 +1273,7 @@ Output:
             const beforeText = document.getElementById('beforeText').value;
             const afterText = document.getElementById('afterText').value;
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
             const lines = inputText.split('\n');
@@ -1288,7 +1291,7 @@ Output:
             const beforeText = document.getElementById('beforeText').value;
             const afterText = document.getElementById('afterText').value;
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
             const lines = inputText.split('\n');
@@ -1306,7 +1309,7 @@ Output:
             const beforeText = document.getElementById('beforeText').value;
             const afterText = document.getElementById('afterText').value;
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
             const lines = inputText.split('\n');
@@ -1322,7 +1325,7 @@ Output:
         function shuffleTextFunc() {
             const inputText = document.getElementById('inputText').value.trim();
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
             let lines = inputText.split('\n').filter(line => line.trim() !== '');
@@ -1342,7 +1345,7 @@ Output:
             const beforeText = document.getElementById('beforeText').value;
             const afterText = document.getElementById('afterText').value;
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
             const lines = inputText.split('\n').filter(line => line.trim() !== '');
@@ -1377,7 +1380,7 @@ Output:
                 `<p style="color: #ffffff;">TOTAL LINES PROCESSED = ${lines.length} </p>` +
                 `<p style="color: #ff0000;">DUPLICATES/INVALID REMOVED = ${lines.length - smtpConfigs.length}</p>` +
                 `<p style="color: #66ff00;">UNIQUE SMTP CONFIGS = ${smtpConfigs.length}</p>` +
-                `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED !</a></p>`,
+                `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED</a></p>`,
                 removed
             );
         }
@@ -1402,14 +1405,14 @@ Output:
             const inputText=document.getElementById('inputText').value.trim();
 
             if ( !inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
 
             let urls=extractURLs(inputText);
 
             if (urls.length===0) {
-                showNotification('NO URLS FOUND !!', true);
+                showNotification('NO URLS FOUND!', true);
                 return;
             }
 
@@ -1417,81 +1420,36 @@ Output:
 
 
             const lshell=removeSlashAndDedupFuncCore(urls, "https://", "/wp-includes/Requests/src/index.php");
-            outputParts.push("====== LUFIX-SHELL ======\n");
-            outputParts.push(lshell.join('\n'));
+            outputParts.push(" ─⋆𖤓⋆─ LUFIX SHELL  ─⋆𖤓⋆─\n");
+            outputParts.push(lshell.join('\n') + "\n");
 
 
             const mailer=removeSlashAndDedupFuncCore(urls, "https://", "/wp-includes/PHPMailer/index.php?pass=rex_cc");
-            outputParts.push("\n====== LUFIX-MAILER ======\n");
-            outputParts.push(mailer.join('\n'));
+            outputParts.push(" ─⋆𖤓⋆─ LUFIX MAILER  ─⋆𖤓⋆─\n");
+            outputParts.push(mailer.join('\n') + "\n");
 
 
             const xshell=removeSlashAndDedupFuncCore(urls, "https://", "/wp-includes/interactivity-api/index.php");
-            outputParts.push("\n====== XLEET-SHELL ======\n");
-            outputParts.push(xshell.join('\n'));
+            outputParts.push(" ─⋆𖤓⋆─ XLEET SHELL  ─⋆𖤓⋆─\n");
+            outputParts.push(xshell.join('\n') + "\n");
+
+
+            const mshell=removeSlashAndDedupFuncCore(urls, "https://", "/wp-content/plugins/index.php");
+            outputParts.push(" ─⋆𖤓⋆─ BACKUP SHELL  ─⋆𖤓⋆─\n");
+            outputParts.push(mshell.join('\n') + "\n");
 
 
             const lock=removeSlashAndDedupFuncCore(urls, "https://", "/wp-content/themes/default/admin.php?wp=safe");
-            outputParts.push("\n====== LOCKDOWN ======\n");
+            outputParts.push(" ─⋆𖤓⋆─ SITE LOCKER  ─⋆𖤓⋆─\n");
             outputParts.push(lock.join('\n'));
-
-            document.getElementById('outputText').value=outputParts.join('\n');
+            
+            document.getElementById('outputText').value = outputParts.join('\n');
             triggerSlideInAnimation();
 
-            updateSummary(`<p style="color: #ffffff;" >TOTAL URLS=$ {
-                    urls.length
-                }
-
-                </p>` + `<p style="color: #66ff00;" >SHOP GENERATED 4 SHELL TYPES</p>`,
+            updateSummary(`<p style="color: #ff0000;">URLS PROCESSED=${
+                    urls.length}
+                </p>` +`<p style="color: #33ff00;">SHOP LINKS GENERATED SUCCESSFULLY</p>`,
                 []);
-        }
-
-        function mShellFunc() {
-            const inputText = document.getElementById('inputText').value.trim();
-            if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
-                return;
-            }
-
-            let urls = extractURLs(inputText);
-            if (urls.length === 0) {
-                showNotification('NO URLS FOUND !!', true);
-                return;
-            }
-
-            const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-content/plugins/index.php");
-            document.getElementById('outputText').value = processed.join('\n');
-            triggerSlideInAnimation();
-
-            updateSummary(
-                `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
-                `<p style="color: #66ff00;">M-SHELL SHELLS GENERATED = ${processed.length}</p>`,
-                []
-            );
-        }
-
-        function lockFunc() {
-            const inputText = document.getElementById('inputText').value.trim();
-            if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
-                return;
-            }
-
-            let urls = extractURLs(inputText);
-            if (urls.length === 0) {
-                showNotification('NO URLS FOUND !!', true);
-                return;
-            }
-
-            const processed = removeSlashAndDedupFuncCore(urls, "https://", "/wp-content/themes/default/admin.php?wp=safe");
-            document.getElementById('outputText').value = processed.join('\n');
-            triggerSlideInAnimation();
-
-            updateSummary(
-                `<p style="color: #ffffff;">TOTAL URLS = ${urls.length} </p>` +
-                `<p style="color: #66ff00;">LOCK SHELLS GENERATED = ${processed.length}</p>`,
-                []
-            );
         }
 
         function removeSlashAndDedupFuncCore(urls, beforeText = "", afterText = "") {
@@ -1521,13 +1479,13 @@ Output:
             const afterText = document.getElementById('afterText').value;
 
             if (!inputText) {
-                showNotification('ARE YOU FUCKING PAPPU?!', true);
+                showNotification('⚠️ ARE YOU FUCKING PAPPU? ⚠️', true);
                 return;
             }
 
             let urls = extractURLs(inputText);
             if (urls.length === 0) {
-                showNotification('NO URLS FOUND !!', true);
+                showNotification('NO URLS FOUND!', true);
                 return;
             }
 
@@ -1568,7 +1526,7 @@ Output:
                 `<p style="color: #ffffff;">TOTAL URLS FOUND = ${urls.length} </p>` +
                 `<p style="color: #ff0000;">DUPLICATES REMOVED = ${urls.length - uniqueUrls.length} </p>` +
                 `<p style="color: #66ff00;">UNIQUE URLS = ${uniqueUrls.length}</p>` +
-                `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED !</a></p>`,
+                `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED</a></p>`,
                 removed
             );
         }
