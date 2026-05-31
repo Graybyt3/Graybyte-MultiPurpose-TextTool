@@ -800,18 +800,29 @@ WARNING: Steal my code, and I'll call you Pappu — there's no worse shame in th
             });
         }
         function runAndClear(processingFn) {
-            return function () {
-                try {
-                    processingFn();
-                    const output = document.getElementById('outputText').value.trim();
-                    if (output !== '') {
-                        clearMiniInputs();
+                return async function () {
+                    try {
+                        processingFn();
+
+                        const output = document.getElementById('outputText').value.trim();
+
+                        if (output !== '') {
+
+                            try {
+                                await navigator.clipboard.writeText(output);
+                                showNotification('[+] PASTED IN CLIPBOARD [+]');
+                            } catch (e) {
+                                console.error('Clipboard copy failed:', e);
+                            }
+
+                            clearMiniInputs();
+                        }
+
+                    } catch (err) {
+                        console.error('Processing error:', err);
                     }
-                } catch (err) {
-                    console.error('Processing error:', err);
-                }
-            };
-        }
+                };
+            }
         function showHowToUsePopup() {
             const existingPopup = document.querySelector('.how-to-use-popup');
             if (existingPopup) existingPopup.remove();
