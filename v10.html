@@ -1538,44 +1538,49 @@ Output:
             const seen = new Map();
             const removed = [];
 
-            function getRootDomain(host) {
-                host = host.toLowerCase().replace(/^www\./, '');
-                const parts = host.split('.');
-                if (parts.length <= 2) return host;
-                return parts.slice(-2).join('.');
-            }
-
-            urls.forEach(url => {
-                let hostname = url.toLowerCase()
+            function getHost(url) {
+                return url.toLowerCase()
                     .replace(/^https?:\/\//, '')
                     .replace(/^www\./, '')
                     .split('/')[0]
                     .split('?')[0]
                     .trim();
+            }
 
-                let root = getRootDomain(hostname);
+            urls.forEach(url => {
+                const host = getHost(url);
 
-                if (!seen.has(root)) {
-                    seen.set(root, url);
+                if (!seen.has(host)) {
+                    seen.set(host, url);
+                    return;
+                }
+
+                const current = seen.get(host);
+                const currentHasWpIncludes = current.toLowerCase().includes('wp-includes');
+                const newHasWpIncludes = url.toLowerCase().includes('wp-includes');
+
+                if (!currentHasWpIncludes && newHasWpIncludes) {
+                    removed.push(current);
+                    seen.set(host, url);
                 } else {
                     removed.push(url);
                 }
             });
 
-            const uniqueUrls = Array.from(seen.values());
-            const processedUrls = applyBeforeAfter(uniqueUrls, beforeText, afterText);
+        const uniqueUrls = Array.from(seen.values());
+        const processedUrls = applyBeforeAfter(uniqueUrls, beforeText, afterText);
 
-            document.getElementById('outputText').value = processedUrls.join('\n');
-            triggerSlideInAnimation();
+        document.getElementById('outputText').value = processedUrls.join('\n');
+        triggerSlideInAnimation();
 
-            updateSummary(
-                `<p style="color: #ffffff;">TOTAL URLS FOUND = ${urls.length} </p>` +
-                `<p style="color: #ff0000;">DUPLICATES REMOVED = ${urls.length - uniqueUrls.length} </p>` +
-                `<p style="color: #66ff00;">UNIQUE URLS = ${uniqueUrls.length}</p>` +
-                `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED</a></p>`,
-                removed
-            );
-        }
+        updateSummary(
+            `<p style="color: #ffffff;">TOTAL URLS FOUND = ${urls.length} </p>` +
+            `<p style="color: #ff0000;">SAME-HOST URLS REMOVED = ${urls.length - uniqueUrls.length} </p>` +
+            `<p style="color: #66ff00;">UNIQUE HOST URLS = ${uniqueUrls.length}</p>` +
+            `<p><a href="#" id="seeRemovedBtn">SEE WHAT REMOVED</a></p>`,
+            removed
+        );
+    }
         function replaceLastIndexWithProfile(url, mode) {
                 let clean = url.trim();
 
